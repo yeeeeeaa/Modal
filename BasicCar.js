@@ -5,4 +5,12 @@ constructor(color, maxSpeed,price){
     this.price=price;
     }
 
+    run() {
+        console.log('Running...');
+    }
+
+
+    stop() {
+        console.log('Stop!');
+    }
 }
