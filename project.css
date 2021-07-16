@@ -1,0 +1,41 @@
+div{
+  text-align: center;
+  padding-top: 130px;
+  padding-right: 50px;
+  padding-left: 400px;
+}
+.bubble
+{
+width: 1200px;
+height: 500px;
+padding: 0px;
+background: #ACDBFC;
+-webkit-border-radius: 13px;
+-moz-border-radius: 13px;
+border-radius: 13px;
+}
+
+.bubble:after
+{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 24px 21px 0;
+border-color: #ACDBFC transparent;
+display: block;
+width: 0;
+z-index: 1;
+bottom: -24px;
+left: 400px;
+}
+
+.circle
+{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #ACDBFC;
+  font-size: 16px;
+  text-align: center;
+  line-height: 200px;
+}
