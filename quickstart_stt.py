@@ -7,6 +7,8 @@ def run_quickstart():
     import os
 
     from google.cloud import speech
+    
+    os.system("arecord -D sysdefault:CARD=1 output.wav")
 
     client=speech.SpeechClient()
 
