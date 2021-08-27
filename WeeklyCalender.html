@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>달력</title>
+<script type="text/javascript">
+
+var day = new Date();
+day.setDate(day.getDate()-day.getDay());
+
+function week_calandar(week) {
+	day.setDate(day.getDate()+week*7);
+	var title = day.getFullYear() + "년" + (day.getMonth()+1) +"월";
+	var data = ""
+		for(var i=0 ; i<7 ; i++) {
+		data += day.getDate() +"<br />"+"<hr />";
+		if(day.getDate() == 1)
+		title += " ~ " + day.getFullYear() + "/" + (day.getMonth()+1);
+		day.setDate(day.getDate()+1);
+		}
+	day.setDate(day.getDate()-7);
+	document.getElementById("calandar").innerHTML = title + "<br />" + data;
+	}
+
+function set_day() {
+	day = new Date();
+	day.setDate(day.getDate()-day.getDay());
+	week_calandar(0);
+	}
+
+</script>
+</head>
+<body>
+<input type="button" value="<" onclick="week_calandar(-1)" />
+<input type="button" value=title onclick="set_day()" />
+<input type="button" value=">" onclick="week_calandar(1)" />
+<p id="calandar"; style="font-size:50px";></p>
+</body>
+</html>
