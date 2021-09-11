@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="./func.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Calendar</title>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<style type="text/css">
+@font-face {
+    font-family: 'IBMPlexSansKR-SemiBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-SemiBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+body{
+  font-family: 'IBMPlexSansKR-SemiBold';
+}
+
+.cal_top{
+    text-align: center;
+    font-size: 30px;
+}
+.cal{
+    text-align: center;    
+}
+table.calendar{
+    border: 1px solid black;
+    display: inline-table;
+    text-align: left;
+    font-size:50px;
+}
+table.calendar td{
+    vertical-align: top;
+    border: 1px solid skyblue;
+    width: 250px;
+    font-size:50px;
+}
+</style>
+</head>
+<body>
+    <div class="cal_top">
+        <a href="#" id="movePrevMonth"><span id="prevMonth" class="cal_tit">&lt;</span></a>
+        <span id="cal_top_year"></span>
+        <span id="cal_top_month"></span>
+        <a href="#" id="moveNextMonth"><span id="nextMonth" class="cal_tit">&gt;</span></a>
+    </div>
+    <div id="cal_tab" class="cal">
+    <a href="./WeeklyCalendar.html">    
+		<button type="button" onClick="connect_weekly_monthly()">8월 주간 달력으로 이동</button>
+	</a>
+    </div>
+<a href="./WeeklyCalendar.html">    
+<button type="button" onClick="connect_weekly_monthly()">8월 주간 달력으로 이동</button>
+</a>
+
+<script type="text/javascript">
+ 	
+
+    $(document).ready(function() {
+        drawCalendar();
+        initDate();
+        drawDays();
+        $("#movePrevMonth").on("click", function(){movePrevMonth();});
+        $("#moveNextMonth").on("click", function(){moveNextMonth();});
+       
+    });
+
+</script>
+</body>
+</html>
