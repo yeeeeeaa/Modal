@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <script type="text/javascript">
+
+
+        // 현재 날짜 가져오기 
+        function getCurrentDate() {
+            var week = new Array('일', '월', '화', '수', '목', '금', '토');
+            var today = new Date();
+            var year = today.getFullYear();
+            var month = today.getMonth() + 1;
+            var day = today.getDate();
+            var dayName = week[today.getDay()];
+
+            document.getElementById("data").innerHTML = year + "년" + month + "월" + day + "일";
+        }
+    </script>
+
+</head>
+
+<body>
+    <input type="button" value="<" onclick="getCurrentDate(-1);">
+    <div id="data"></div> 
+    <input type="button" value=">" onclick="getCurrentDate(1);">
+</body>
+
+</html>
