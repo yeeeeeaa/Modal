@@ -31,16 +31,13 @@ def day_add(target):
     day=month_day(target)
     print(dDay)
     if '추가' in target:
-        with open('textfile1.txt','rt',encoding='UTF8')as data:
-            liness=data.readlines()
-        for i in range(0,1):
-            liness[i]=liness[i][3:]
-            users_ref=ref.child(dDay)
-            users_ref.set({
-                '축구하기':{
-                    '내용':liness[i]
-                    }
-                })
+        r=open('textfile1.txt',mode='rt',encoding='utf-8')
+        users_ref=ref.child(dDay)
+        users_ref.set({
+            '축구하기':{
+                    '내용':r.read(100)
+                        }
+        })
             
 def day_check(target):
     dDay = month_day(target)
