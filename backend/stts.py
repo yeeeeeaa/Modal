@@ -33,23 +33,12 @@ def day_add(target):
             day_work = target[start:finish]
             
 def day_check(target):
-    if '월' in target:
-        finish = target.rfind('월')
-        month = target[0:finish]
-        if '일' in target:
-            start = target.find('월') + 2
-            finish = target.rfind('일') - 2
-            day = target[start:finish]
-            if len(month) == 1:
-                month = '0'+month
-            if len(day) == 1:
-                day = '0'+day
-            dDay = '21'+month+day
-            if dDay in row:
-                start = row.find('내용') + 6
-                finish = row.find('}') - 1
-                schedule = row[start:finish] + "이 있습니다."
-                run_quickstart(schedule)
+    dDay = month_day(target)
+    users_ref = str(ref.child(dDay).get())
+    start = users_ref.find('내용') + 6
+    finish = users_ref.find('}') - 1
+    schedule = users_ref[start:finish] + "이 있습니다."
+    run_quickstart(schedule)
 
 def day_change(target):
     if '변경' in target:
@@ -57,7 +46,45 @@ def day_change(target):
             start = target.find('월요일에') + 5
             finish = target.rfind('추가')
             day_work = target[start:finish]
+        
+def day_delete(target):
+    dDay = month_day(target)
+    print(dDay)
+    users_ref = str(ref.child(dDay).get())
+    print(users_ref)
+    start = users_ref.find('내용') + 6
+    finish = users_ref.find('}') - 1
+    schedule = users_ref[start:finish] + " 일정이 삭제되었습니다."
+    ref.child(dDay).delete()
+    print("확인해보자")
+    run_quickstart(schedule)
+
+    """
+            if dDay in row:
+                start = target.find('일') + 2
+                finish = target.rfind('일') - 2
+                delete_day = target[start:finish]
+                print(delete_day)
             
+                users_ref = ref.child(dDay).get()
+                users_ref.child(delete_day).remove()
+                schedule = delete_day + " 일정이 삭제되었습니다."
+                run_quickstart(schedule)
+                """
+                
+def month_day(target):
+    finish = target.rfind('월')
+    month = target[0:finish]
+    start = target.find('월') + 2
+    finish = target.find('일')
+    day = target[start:finish]
+    if len(month) == 1:
+        month = '0'+month
+    if len(day) == 1:
+        day = '0'+day
+    dDay = '21'+month+day
+    return dDay
+        
 def run_quickstart(tts_text):
     # [START tts_quickstart]
     """Synthesizes speech from the input string of text or ssml.
@@ -114,6 +141,9 @@ if __name__=="__main__":
             ask = 0
         if '변경' in target:
             day_change(target)
+        if '삭제' in target:
+            day_delete(target)
+            ask = 0
     
     os.system("aplay output.wav")
     print('sucess')
