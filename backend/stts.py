@@ -26,11 +26,21 @@ def target_text() :
     return target
 
 def day_add(target):
+    dDay=month_day(target)
+    month=month_day(target)
+    day=month_day(target)
+    print(dDay)
     if '추가' in target:
-        if '월요일' in target:
-            start = target.find('월요일에') + 5
-            finish = target.rfind('추가')
-            day_work = target[start:finish]
+        with open('textfile1.txt','rt',encoding='UTF8')as data:
+            liness=data.readlines()
+        for i in range(0,1):
+            liness[i]=liness[i][3:]
+            users_ref=ref.child(dDay)
+            users_ref.set({
+                '축구하기':{
+                    '내용':liness[i]
+                    }
+                })
             
 def day_check(target):
     dDay = month_day(target)
