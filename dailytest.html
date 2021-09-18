@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>달력</title>
+
+    <script type="text/javascript">
+
+        //오늘
+        var nowDate = new Date();
+        var nowYear = nowDate.getFullYear();
+        var nowMonth = nowDate.getMonth() + 1;
+        var nowDay = nowDate.getDate();
+
+        if (nowMonth < 10) { nowMonth = "0" + nowMonth; }
+        if (nowDay < 10) { nowDay = "0" + nowDay; }
+
+        document.write('오늘은 ' + nowYear + "년" + nowMonth + "월" + nowDay + "일" + '<br/>');
+
+
+
+        //어제
+
+        var nowDate = new Date();
+        var yesterDate = nowDate.getTime() - (1 * 24 * 60 * 1000);
+        nowDate.setTime(yesterDate);
+
+        var yesterYear = nowDate.getFullYear();
+        var yesterMonth = nowDate.getMonth() + 1;
+        var yesterDay = nowDate.getDate() - 1;
+
+        if (yesterMonth < 10) { yesterMonth = "0" + yesterMonth; }
+        if (yesterDay < 10) { yesterDay = "0" + yesterDay; }
+
+
+        document.write('어제는' + yesterYear + "-" + yesterMonth + "-" + yesterDay);
+
+
+        //내일
+
+        var nowDate = new Date();
+        var tomorDate = nowDate.getTime() - (1 * 24 * 60 * 1000);
+        nowDate.setTime(tomorDate);
+
+        var tomorYear = nowDate.getFullYear();
+        var tomorMonth = nowDate.getMonth() + 1;
+        var tomorDay = nowDate.getDate() + 1;
+
+        if (tomorMonth < 10) { tomorMonth = "0" + tomorMonth; }
+        if (tomorDay < 10) { tomorDay = "0" + tomorDay; }
+
+        var resultDate = tomorYear + "-" + tomorMonth + "-" + tomorDay;
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+
+</html>
