@@ -4,13 +4,13 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
 
-cred = credentials.Certificate("/home/pi/speech/modal-dbe5e-firebase-adminsdk-k64o9-bf81f0cd3a.json")
+cred = credentials.Certificate("/home/pi/complete/modal-dbe5e-firebase-adminsdk-k64o9-bf81f0cd3a.json")
 firebase_admin.initialize_app(cred, {'databaseURL': 'https://modal-dbe5e-default-rtdb.firebaseio.com/'})
 
 ref = db.reference('김철수')
 row = str(ref.get())
 
-credential_path="/home/pi/speech/speech-test-318806-3ae95ccff5d1.json"
+credential_path="/home/pi/complete/gongmojun-0cad85a2f781.json"
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credential_path
 
 from google.cloud import speech
@@ -25,12 +25,6 @@ def target_text() :
     
     return target
 
-def day_add(target):
-    if '추가' in target:
-        if '월요일' in target:
-            start = target.find('월요일에') + 5
-            finish = target.rfind('추가')
-            day_work = target[start:finish]
             
 def day_check(target):
     if '월' in target:
@@ -50,6 +44,22 @@ def day_check(target):
                 finish = row.find('}') - 1
                 schedule = row[start:finish] + "이 있습니다."
                 run_quickstart(schedule)
+         
+
+def day_add(target):
+    if '추가' in target:
+        if '월요일' in target:
+            start = target.find('월요일에') + 5
+            finish = target.rfind('추가')
+            day_work = target[start:finish]
+            #database save
+            r=open('textfile.txt',mode='rt',encoding='utf-8')
+            users_ref = ref.child('210906')
+            users_ref.set({
+              '축구하기':{
+                  '내용':r.read(1000)
+                  }
+            })
 
 def day_change(target):
     if '변경' in target:
