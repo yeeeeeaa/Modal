@@ -41,5 +41,69 @@
             </form>
         </div>
     </div>
+    <script>
+        var firebaseConfig = {
+                apiKey: "AIzaSyC7Y4NQcEyj1j3hm2xgf3jrN5kAW4B-vgc",
+         authDomain: "modal-dbe5e.firebaseapp.com",
+         databaseURL: "https://modal-dbe5e-default-rtdb.firebaseio.com",
+         projectId: "modal-dbe5e",
+         storageBucket: "modal-dbe5e.appspot.com",
+         messagingSenderId: "696208452034",
+         appId: "1:696208452034:web:00b4cae826d1a7c6cc8e5b",
+         measurementId: "G-9STDBTTEC7"
+              };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        
+   </script>
+
+    <script>
+        
+        var DB_id_1=0;
+        var DB_id_2=0;
+        var DB_id_3=0;
+
+        var DB_pw_1=0;
+        var DB_pw_2=0;
+        var DB_pw_3=0;
+
+        var fb_id_1 = firebase.database().ref("login/1/id");
+        fb_id_1.on('value', snap =>{ DB_id_1 = snap.val();});
+
+        var fb_pw_1 = firebase.database().ref("login/1/pw");
+        fb_pw_1.on('value', snap =>{ DB_pw_1 = snap.val();});
+
+        var fb_id_2 = firebase.database().ref("login/2/id");
+        fb_id_2.on('value', snap =>{ DB_id_2 = snap.val();});
+
+        var fb_pw_2 = firebase.database().ref("login/2/pw");
+        fb_pw_2.on('value', snap =>{ DB_pw_2 = snap.val();});
+
+        function login(form){
+
+            if (form.id.value==DB_id_1) {
+                if(form.pw.value==DB_pw_1){
+                    alert("축하한다.")
+                }
+                else alert("비밀번호가 틀렸습니다.")
+            } 
+
+            else if (form.id.value==DB_id_2) {
+                if(form.pw.value==DB_pw_2){
+                    alert("축하한다.")
+                }
+                else alert("비밀번호가 틀렸습니다.")
+            }
+
+            else if (form.id.value==DB_id_3) {
+                if(form.pw.value==DB_pw_3){
+                    alert("축하한다.")
+                }
+                else alert("비밀번호가 틀렸습니다.")
+            }
+
+            else alert("아이디가 틀렸습니다.")
+        }
+    </script>
 </body>
 </html>
