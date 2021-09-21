@@ -24,20 +24,23 @@ def target_text() :
     print(target)
     
     return target
-
 def day_add(target):
-    dDay=month_day(target)
+  dDay=month_day(target)
     month=month_day(target)
     day=month_day(target)
+    target=target_text()
+    target_add=target[:-3]
+    target_summarize=target[5:-3]
+    
     print(dDay)
     if '추가' in target:
-        r=open('textfile1.txt',mode='rt',encoding='utf-8')
         users_ref=ref.child(dDay)
         users_ref.set({
-            '축구하기':{
-                    '내용':r.read(100)
-                        }
+            target_summarize:{
+                '내용':target_add
+            }
         })
+
             
 def day_check(target):
     dDay = month_day(target)
