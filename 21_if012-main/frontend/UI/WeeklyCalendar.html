@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="./func.js"></script>
+<style>
+@font-face {
+    font-family: 'IBMPlexSansKR-SemiBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-SemiBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+body{
+  font-family: 'IBMPlexSansKR-SemiBold';
+}
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>달력</title>
+<script>
+	window.onload=function(){
+		day = new Date();
+    	day.setDate(day.getDate()-day.getDay());
+    	week_calandar(0);
+	}
+</script>
+</head>
+<body>
+<input type="button" value="<" onclick="week_calandar(-1)" />
+
+<input type="button" value=">" onclick="week_calandar(1)" />
+
+
+<p id="calandar"; style="font-size:50px";></p>
+<script language="JavaScript">
+
+
+</script>
+<a href="../DailyCalender.html">    
+  <button type="button" onClick="connect_weekly_monthly()">8월 일간 달력으로 이동</button>
+  </a>
+
+</body>
+</html>

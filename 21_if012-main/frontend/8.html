@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+div.outside {
+  background-color: skyblue;
+  width: 1600px;
+  height:800px;
+ font-size:70px;
+ margin:auto;
+  text-align:center;
+ padding:50px 10px;
+}
+div.inside1{
+   background-color: white;
+   width: 600px;
+   height: 150px;
+   padding: 10px 10px;
+    position: absolute;
+     top: 600px;
+    left: 300px;
+}
+div.inside2{
+   background-color: blue;
+   width: 600px;
+   height: 150px;
+   padding: 10px 10px;
+    position: absolute;
+     top: 600px;
+    right: 300px;
+}
+div.inside1 p{
+   font-size: 45px;
+   text-align:center;
+}
+div.inside2 p{
+   font-size: 45px;
+   text-align:center;
+}
+
+</style>
+</head>
+<body>
+ <div class="outside"><p>6월7일 오후 3시 병원 예약 일정 등록이 완료되었습니다.<br>확인하시겠습니까?</p>
+        <div OnClick="location.href ='./UI/MonthlyCalendar.html'" class="inside1 in1"><p>아니오</p></div>
+        <div OnClick="location.href ='./DailyCalender.html'" class="inside2 in2"><p>네</p></div>
+
+    </div>
+
+</body>
+</html>
