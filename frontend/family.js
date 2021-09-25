@@ -20,7 +20,22 @@ function addSchedule() {
 
     //firebase에 저장되는 일정 형식
     var formatForDB;
-    formatForDB = month + "월 " + day + "일 " + valueInSchedule;
+    var formatMonth;
+    var formatDay;
+
+    //0n월을 n월로 바꾸기
+    formatMonth = month.split("");
+    if (formatMonth[0] == "0") {
+        formatMonth[0] = " ";
+    }
+
+    //0n일을 n일로 바꾸기
+    formatDay = day.split("");
+    if (formatDay[0] == "0") {
+        formatDay[0] = " ";
+    }
+
+    formatForDB = formatMonth.join('') + "월 " + formatDay.join('') + "일 " + valueInSchedule;
 
     //firebase에 저장
     var dbRefObject = firebase.database().ref();
