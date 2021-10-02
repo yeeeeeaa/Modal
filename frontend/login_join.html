@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lnag="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title>네이버 : 회원가입</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="project.css">
+        <title>Document</title>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/53a8c415f1.js" crossorigin="anonymous"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-database.js"></script>
+        <script src="login_func.js"></script>
+    </head>
+    <body>
+        <!-- wrapper -->
+        <div class="wrap">
+
+            <!-- content-->
+            <div class="login2">
+                <h2>회원가입</h2>
+                
+                <form style="padding-right: 40%;">
+                <!-- ID -->
+                    <div class="login_join">
+                        <h4>아이디</h4>
+                        <input type="text" name="id" id="id"  class="int" maxlength="20" placeholder="아이디">
+                    </div>
+                    
+                    <!-- PW1 -->
+                    <div class="login_join">
+                        <h4>비밀번호</h4>
+                        <input type="Password" name="pswd1" id="pswd1" class="int" maxlength="20" placeholder="비밀번호">
+                    </div>
+
+                    <!-- NAME -->
+                    <div class="login_join">
+                        <h4>이름</h4>
+                        <input type="text" name="name" id="name" class="int" maxlength="20" placeholder="이름">
+                    </div>
+
+                    <!-- EMAIL -->
+                    <div class="login_join">
+                        <h4>이메일</h4>
+                        <input type="email" name="email" id="email" class="int" maxlength="20" placeholder="이메일">
+                    </div>
+
+                    <!-- EMOTION EMAIL -->
+                    <div class="login_join">
+                        <h4>감정 분석 결과 수신 이메일</h4>
+                        <input type="email" name="e_email" id="e_email" class="int" maxlength="20" placeholder="이메일">
+                    </div>
+
+                    <!-- JOIN BUTTON-->
+                    <div class="submit_join">
+                        <input type="button" value="가입하기" onClick="login_join(this.form)">
+                    </div>
+               </form> 
+                
+            </div> 
+            <!-- content-->
+
+        </div> 
+        <!-- wrapper -->
+
+        <script>
+            var firebaseConfig = {
+            apiKey: "AIzaSyC7Y4NQcEyj1j3hm2xgf3jrN5kAW4B-vgc",
+            authDomain: "modal-dbe5e.firebaseapp.com",
+            databaseURL: "https://modal-dbe5e-default-rtdb.firebaseio.com",
+            projectId: "modal-dbe5e",
+            storageBucket: "modal-dbe5e.appspot.com",
+            messagingSenderId: "696208452034",
+            appId: "1:696208452034:web:00b4cae826d1a7c6cc8e5b",
+            measurementId: "G-9STDBTTEC7"
+            };
+
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+        </script>
+
+        <script>
+
+            var DB_id_1=0;
+            var DB_id_2=0;
+            var DB_id_3=0;
+            var DB_id_4=0;
+            var DB_id_5=0;
+            
+            var login_number=0;
+
+            var form_id=0;
+            var form_pswd=0;
+            var form_name=0;
+            var form_email=0;
+            var form_e_email=0;
+            
+            var fb_id_1 = firebase.database().ref("login/1/id");
+            fb_id_1.on('value', snap =>{ DB_id_1 = snap.val();});
+
+            var fb_id_2 = firebase.database().ref("login/2/id");
+            fb_id_2.on('value', snap =>{ DB_id_2 = snap.val();});
+
+            var fb_id_3 = firebase.database().ref("login/3/id");
+            fb_id_3.on('value', snap =>{ DB_id_3 = snap.val();});
+
+            var fb_id_4 = firebase.database().ref("login/4/id");
+            fb_id_4.on('value', snap =>{ DB_id_4 = snap.val();});
+
+            var fb_id_5 = firebase.database().ref("login/5/id");
+            fb_id_5.on('value', snap =>{ DB_id_5 = snap.val();});
+            
+             
+        </script>
+    </body>
+</html>
+
