@@ -103,8 +103,19 @@ li {
   flex-direction: column;
 }
 
+.login2 {
+  width: 40%;
+  height: 700px;
+  background: white;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 h2 {
-  color: tomato;
+  color: black;
   font-size: 2em;
 }
 .login_sns {
@@ -135,7 +146,7 @@ h2 {
 }
 
 .login_id input {
-  width: 100%;
+  width: 130%;
   height: 50px;
   border-radius: 30px;
   margin-top: 10px;
@@ -150,7 +161,22 @@ h2 {
 }
 
 .login_pw input {
-  width: 100%;
+  width: 130%;
+  height: 50px;
+  border-radius: 30px;
+  margin-top: 10px;
+  padding: 0px 20px;
+  border: 1px solid lightgray;
+  outline: none;
+}
+
+.login_join {
+  margin-top: 20px;
+  width: 160%;
+}
+
+.login_join input {
+  width: 130%;
   height: 50px;
   border-radius: 30px;
   margin-top: 10px;
@@ -179,7 +205,23 @@ h2 {
   border: 0;
   outline: none;
   border-radius: 40px;
-  background: linear-gradient(to left, rgb(255, 77, 46), rgb(255, 155, 47));
+  background: linear-gradient(to left, #00BFFF, #87ceeb);
+  color: white;
+  font-size: 1.2em;
+  letter-spacing: 2px;
+}
+.submit_join {
+  margin-top: 50px;
+  width: 80%;
+  padding-left:20%
+}
+.submit_join input {
+  width: 270%;
+  height: 50px;
+  border: 0;
+  outline: none;
+  border-radius: 40px;
+  background: linear-gradient(to left, #00BFFF, #87ceeb);
   color: white;
   font-size: 1.2em;
   letter-spacing: 2px;
