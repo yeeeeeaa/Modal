@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="project.css">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/53a8c415f1.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./login.css">
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-database.js"></script>
+</head>
+<body>
+    <div class="wrap">
+        <div class="login">
+            <h2>Log-in</h2>
+            <div class="login_sns">
+            <li><a href=""><i class="fab fa-instagram"></i></a></li>
+            <li><a href=""><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href=""><i class="fab fa-twitter"></i></a></li>
+            </div>
+            <form>
+                <div class="login_id">
+                    <h4>ID</h4>
+                    <input type="text" name="id" id="" placeholder="id">
+                </div>
+                <div class="login_pw">
+                    <h4>Password</h4>
+                    <input type="Password" name="pw"  id="" placeholder="Password">
+                </div>
+                <div class="login_etc">
+                    <div class="checkbox">
+                    <input type="checkbox" name="" id=""> Remember Me?
+                    </div>
+                    <div class="forgot_pw">
+                    <a href="">Forgot Password?</a>
+                </div>
+                </div>
+                <div class="submit">
+                    <input type="button" value="submit" onClick="login(this.form)">
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        var firebaseConfig = {
+                apiKey: "AIzaSyC7Y4NQcEyj1j3hm2xgf3jrN5kAW4B-vgc",
+         authDomain: "modal-dbe5e.firebaseapp.com",
+         databaseURL: "https://modal-dbe5e-default-rtdb.firebaseio.com",
+         projectId: "modal-dbe5e",
+         storageBucket: "modal-dbe5e.appspot.com",
+         messagingSenderId: "696208452034",
+         appId: "1:696208452034:web:00b4cae826d1a7c6cc8e5b",
+         measurementId: "G-9STDBTTEC7"
+              };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        
+   </script>
+
+    <script>
+        
+        var DB_id_1=0;
+        var DB_id_2=0;
+        var DB_id_3=0;
+
+        var DB_pw_1=0;
+        var DB_pw_2=0;
+        var DB_pw_3=0;
+
+        var fb_id_1 = firebase.database().ref("login/1/id");
+        fb_id_1.on('value', snap =>{ DB_id_1 = snap.val();});
+
+        var fb_pw_1 = firebase.database().ref("login/1/pw");
+        fb_pw_1.on('value', snap =>{ DB_pw_1 = snap.val();});
+
+        var fb_id_2 = firebase.database().ref("login/2/id");
+        fb_id_2.on('value', snap =>{ DB_id_2 = snap.val();});
+
+        var fb_pw_2 = firebase.database().ref("login/2/pw");
+        fb_pw_2.on('value', snap =>{ DB_pw_2 = snap.val();});
+
+        function login(form){
+
+            if (form.id.value==DB_id_1) {
+                if(form.pw.value==DB_pw_1){
+                    alert("축하한다.")
+                }
+                else alert("비밀번호가 틀렸습니다.")
+            } 
+
+            else if (form.id.value==DB_id_2) {
+                if(form.pw.value==DB_pw_2){
+                    alert("축하한다.")
+                }
+                else alert("비밀번호가 틀렸습니다.")
+            }
+
+            else if (form.id.value==DB_id_3) {
+                if(form.pw.value==DB_pw_3){
+                    alert("축하한다.")
+                }
+                else alert("비밀번호가 틀렸습니다.")
+            }
+
+            else alert("아이디가 틀렸습니다.")
+        }
+    </script>
+</body>
+</html>
