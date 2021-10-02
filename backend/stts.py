@@ -4,14 +4,10 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
 
-cred = credentials.Certificate("/home/pi/speech/modal-dbe5e-firebase-adminsdk-k64o9-bf81f0cd3a.json")
-firebase_admin.initialize_app(cred, {'databaseURL': 'https://modal-dbe5e-default-rtdb.firebaseio.com/'})
+
 
 ref = db.reference('김철수')
 row = str(ref.get())
-
-credential_path="/home/pi/speech/speech-test-318806-3ae95ccff5d1.json"
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credential_path
 
 import schedule
 import time
@@ -30,31 +26,21 @@ def target_text() :
 
 def day_add(target, change):
     dDay=month_day(target)
-    if change == 0:
-        finish = target.find('추가') - 1
-        target_add=target[:finish]
-        start = target.find('일') + 1
-        target_summarize=target[start:finish]
-        print(dDay)
-        users_ref=ref.child(dDay)
-        users_ref.update({
-            target_summarize:{
-                '내용':target_add
-            }
-        })
-        run_quickstart(target_add+"일정이 추가되었습니다.")
-    elif change == 1:
-        start = target.find('일') + 1
-        target_summarize=target[start:]
-        print(dDay)
-        users_ref=ref.child(dDay)
-        users_ref.update({
-            target_summarize:{
-                '내용':target
-            }
-        })
+    start = target.find('일') + 1
+    target_summarize=target[start:]
+    print(dDay)
+    users_ref=ref.child(dDay)
+    users_ref.update({
+        target_summarize:{
+            '내용':target
+           }
+    })
+    if change == 1:
         run_quickstart(target_summarize+"일정으로 변경되었습니다.")
-    return 0
+        return 0
+    else:
+        run_quickstart(target_summarize+"일정이 추가되었습니다.")
+        return 0
             
 def day_check(target):
     dDay = month_day(target)
@@ -161,7 +147,7 @@ def run_quickstart(tts_text):
     # [END tts_quickstart]
     os.system("aplay output.wav")
 
-def time_job():
+def time_job_emotion():
     global emotion
     d = datetime.now()
     hour = d.hour
@@ -169,36 +155,64 @@ def time_job():
     if hour == 10 and minute == 28 and emotion:
         run_quickstart("오늘의 기분은 어떠신가요?")
         return False
-    elif hour != 10 or minute != 28:
+    elif hour != 10 or minute != 28 :
         return True
+    
+def time_job_check():
+    global today
+    d = datetime.now()
+    hour = d.hour
+    minute = d.minute
+    if hour == 6 and minute == 14 and today:
+        month = str(d.month) + "월 "
+        day = str(d.day) + "일"
+        print(month+day)
+        day_check(month+day)
+        return False
+    else :
+        return True
+    
+def advice(target):
+    run_quickstart("저희가 지원하는 기능에는 일정 확인, 추가, 변경, 삭제가 있습니다.")
+    run_quickstart("9월 29일 일정 추가")
+    run_quickstart("처럼 원하시는 날짜와 함께 네 가지 기능 중 원하는 기능을 말씀해주세요")
 
 if __name__=="__main__":
     global target
     global emotion
+    global today
     emotion = True
     change = 0
+    add = 0
     target = ""
     ask = 1
     while(ask):
         if change == 0:
-            emotion = time_job()
+            emotion = time_job_emotion()
+            today = time_job_check()
         
         os.system("sudo python stt_add.py>textfile1.txt")
         target = target_text()
         
         if change == 1:
             change = day_add(target, 1)
+        elif add == 1:
+            add = day_add(target, 0)
         
         if '호출' in target:
             print('부르셨나요')
         elif '추가' in target:
-            day_add(target, 0)
+            run_quickstart("추가하고 싶은 일정을 말해 주세요")
+            add = 1
         elif '확인' in target:
             day_check(target)
         elif '변경' in target:
             change = day_change(target)
         elif '삭제' in target:
             day_delete(target, 0)
+        elif '도움말' in target:
+            advice(target)
+            
             
         if emotion == False:
             if '행복' in target:
