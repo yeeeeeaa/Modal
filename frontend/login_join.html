@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lnag="ko">
     <head>
         <meta charset="UTF-8">
+        <title>네이버 : 회원가입</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="project.css">
         <title>Document</title>
@@ -15,41 +16,53 @@
         <!-- wrapper -->
         <div class="wrap">
 
-            <!-- login -->
-            <div class="login">
-                <h2>로그인</h2>
-                <br />
-                <br />
-
-                <form>
-                    <div class="login_id">
+            <!-- content-->
+            <div class="login2">
+                <h2>회원가입</h2>
+                
+                <form style="padding-right: 40%;">
+                <!-- ID -->
+                    <div class="login_join">
                         <h4>아이디</h4>
-                        <input type="text" name="id" id="" placeholder="아이디">
+                        <input type="text" name="id" id="id"  class="int" maxlength="20" placeholder="아이디">
                     </div>
-
-                    <div class="login_pw">
+                    
+                    <!-- PW1 -->
+                    <div class="login_join">
                         <h4>비밀번호</h4>
-                        <input type="Password" name="pw"  id="" placeholder="비밀번호">
+                        <input type="Password" name="pswd1" id="pswd1" class="int" maxlength="20" placeholder="비밀번호">
                     </div>
 
-                    <div class="login_etc">
-                        <div class="forgot_pw">
-                            <a href="login_join.html">회원가입</a>
-                        </div>
+                    <!-- NAME -->
+                    <div class="login_join">
+                        <h4>이름</h4>
+                        <input type="text" name="name" id="name" class="int" maxlength="20" placeholder="이름">
                     </div>
-        
-                    <div class="submit">
-                        <input type="button" value="제출" onClick="login(this.form)">
+
+                    <!-- EMAIL -->
+                    <div class="login_join">
+                        <h4>이메일</h4>
+                        <input type="email" name="email" id="email" class="int" maxlength="20" placeholder="이메일">
                     </div>
-                </form>
 
-            </div>
-            <!-- login -->
+                    <!-- EMOTION EMAIL -->
+                    <div class="login_join">
+                        <h4>감정 분석 결과 수신 이메일</h4>
+                        <input type="email" name="e_email" id="e_email" class="int" maxlength="20" placeholder="이메일">
+                    </div>
 
-        </div>
+                    <!-- JOIN BUTTON-->
+                    <div class="submit_join">
+                        <input type="button" value="가입하기" onClick="login_join(this.form)">
+                    </div>
+               </form> 
+                
+            </div> 
+            <!-- content-->
+
+        </div> 
         <!-- wrapper -->
 
-        <!-- firebase -->
         <script>
             var firebaseConfig = {
             apiKey: null,
@@ -66,54 +79,39 @@
             firebase.initializeApp(firebaseConfig);
         </script>
 
-        <!-- login_function -->
         <script>
-            
+
             var DB_id_1=0;
             var DB_id_2=0;
             var DB_id_3=0;
             var DB_id_4=0;
             var DB_id_5=0;
+            
+            var login_number=0;
 
-            var DB_pw_1=0;
-            var DB_pw_2=0;
-            var DB_pw_3=0;
-            var DB_pw_4=0;
-            var DB_pw_5=0;
-
+            var form_id=0;
+            var form_pswd=0;
+            var form_name=0;
+            var form_email=0;
+            var form_e_email=0;
+            
             var fb_id_1 = firebase.database().ref("login/1/id");
             fb_id_1.on('value', snap =>{ DB_id_1 = snap.val();});
-
-            var fb_pw_1 = firebase.database().ref("login/1/pw");
-            fb_pw_1.on('value', snap =>{ DB_pw_1 = snap.val();});
 
             var fb_id_2 = firebase.database().ref("login/2/id");
             fb_id_2.on('value', snap =>{ DB_id_2 = snap.val();});
 
-            var fb_pw_2 = firebase.database().ref("login/2/pw");
-            fb_pw_2.on('value', snap =>{ DB_pw_2 = snap.val();});
-
             var fb_id_3 = firebase.database().ref("login/3/id");
             fb_id_3.on('value', snap =>{ DB_id_3 = snap.val();});
-
-            var fb_pw_3 = firebase.database().ref("login/3/pw");
-            fb_pw_3.on('value', snap =>{ DB_pw_3 = snap.val();});
 
             var fb_id_4 = firebase.database().ref("login/4/id");
             fb_id_4.on('value', snap =>{ DB_id_4 = snap.val();});
 
-            var fb_pw_4 = firebase.database().ref("login/4/pw");
-            fb_pw_4.on('value', snap =>{ DB_pw_4 = snap.val();});
-
             var fb_id_5 = firebase.database().ref("login/5/id");
             fb_id_5.on('value', snap =>{ DB_id_5 = snap.val();});
-
-            var fb_pw_5 = firebase.database().ref("login/5/pw");
-            fb_pw_5.on('value', snap =>{ DB_pw_5 = snap.val();});
-
             
+             
         </script>
-        <!-- login_function -->
-
     </body>
 </html>
+
