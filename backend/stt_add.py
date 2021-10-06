@@ -3,9 +3,6 @@ import wave
 import time
 import os
 
-credential_path="/home/pi/speech/speech-test-318806-3ae95ccff5d1.json"
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credential_path
-
 import sys
 
 
@@ -73,7 +70,7 @@ def run_quickstart():
         config=speech.RecognitionConfig(
             encoding=speech.RecognitionConfig.AudioEncoding.LINEAR16,
             sample_rate_hertz=44100,
-            language_code="ko-KR",
+            language_code="ko-KR"
             )
 
         response=client.recognize(config=config, audio=audio)
@@ -83,7 +80,7 @@ def run_quickstart():
 
 if __name__=="__main__":
     run_quickstart()
-    os.system("touch textfile1")
+    #os.system("touch textfile1.txt")
     
     
     
