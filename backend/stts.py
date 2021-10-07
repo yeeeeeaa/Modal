@@ -4,7 +4,11 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
 
+cred = credentials.Certificate("/home/pi/speech/modal-dbe5e-firebase-adminsdk-k64o9-bf81f0cd3a.json")
+firebase_admin.initialize_app(cred, {'databaseURL': 'https://modal-dbe5e-default-rtdb.firebaseio.com/'})
 
+credential_path="/home/pi/speech/modal-324900-dadc152185c5.json"
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credential_path
 
 ref = db.reference('김철수')
 row = str(ref.get())
@@ -169,27 +173,47 @@ def time_job_check():
         print(month+day)
         day_check(month+day)
         return False
-    else :
+    elif hour != 6 or minute != 14 :
         return True
     
 def advice(target):
     run_quickstart("저희가 지원하는 기능에는 일정 확인, 추가, 변경, 삭제가 있습니다.")
     run_quickstart("9월 29일 일정 추가")
     run_quickstart("처럼 원하시는 날짜와 함께 네 가지 기능 중 원하는 기능을 말씀해주세요")
+    
+def ai_train():
+    global ai
+    d = datetime.now()
+    day = d.day
+    nowTime = d.strftime('%H.%M')
+    print(nowTime)
+    if day == 7 and nowTime == "23.06" and ai:
+        os.system("sudo python ai.py>day_return.txt")
+        with open('day_return.txt', 'r') as file:
+            b = file.readline()
+        print(b)
+        run_quickstart(b)
+        return False
+    elif nowTime != "23.06":
+        return True
+        
 
 if __name__=="__main__":
     global target
     global emotion
     global today
+    global ai
+    ai = True
     emotion = True
     change = 0
     add = 0
     target = ""
-    ask = 1
-    while(ask):
+    
+    while True:
         if change == 0:
             emotion = time_job_emotion()
             today = time_job_check()
+            ai = ai_train()
         
         os.system("sudo python stt_add.py>textfile1.txt")
         target = target_text()
