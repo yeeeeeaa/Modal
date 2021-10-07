@@ -4,7 +4,6 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    <script src="emotion.js"></script>
     <link rel="stylesheet" href="project.css">
     <title>캘린더 인공지능</title>
 <style>
@@ -20,6 +19,7 @@
             font-size:50px;
             margin-top:50px; 
             margin-left:30px;
+            text-align: center;
             background-color: #87ceeb;
             border-radius: 0.3em;
         }
@@ -49,32 +49,120 @@
         firebase.initializeApp(firebaseConfig);
 
 
+// 버튼 클릭 시 데이터 삽입
 
+     function button_angry_click(){
+            
+        var postData = {
+          brdmemo:"분노"
+         };
+        var newPostKey = firebase.database().ref().child('posts').push().key;
+
+        var updates = {};
+        updates['/emotion/' + newPostKey] = postData;
+
+        firebase.database().ref().update(updates);
+        }
+        function button_angry_click(){
+            
+            var postData = {
+              brdmemo:"분노"
+             };
+            var newPostKey = firebase.database().ref().child('posts').push().key;
+    
+            var updates = {};
+            updates['/emotion/' + newPostKey] = postData;
+    
+            firebase.database().ref().update(updates);
+            }
+
+            function button_happy_click(){
+            
+            var postData = {
+              brdmemo:"행복"
+             };
+            var newPostKey = firebase.database().ref().child('posts').push().key;
+    
+            var updates = {};
+            updates['/emotion/' + newPostKey] = postData;
+    
+            firebase.database().ref().update(updates);
+            }
+
+            function button_excited_click(){
+            
+            var postData = {
+              brdmemo:"신남"
+             };
+            var newPostKey = firebase.database().ref().child('posts').push().key;
+    
+            var updates = {};
+            updates['/emotion/' + newPostKey] = postData;
+    
+            firebase.database().ref().update(updates);
+            }
+
+            function button_depression_click(){
+            
+            var postData = {
+              brdmemo:"우울"
+             };
+            var newPostKey = firebase.database().ref().child('posts').push().key;
+    
+            var updates = {};
+            updates['/emotion/' + newPostKey] = postData;
+    
+            firebase.database().ref().update(updates);
+            }
+
+            function button_normal_click(){
+            
+            var postData = {
+              brdmemo:"평범"
+             };
+            var newPostKey = firebase.database().ref().child('posts').push().key;
+    
+            var updates = {};
+            updates['/emotion/' + newPostKey] = postData;
+    
+            firebase.database().ref().update(updates);
+            }
+
+            function button_sad_click(){
+            var postData = {
+              brdmemo:"슬픔"
+             };
+            var newPostKey = firebase.database().ref().child('posts').push().key;
+    
+            var updates = {};
+            updates['/emotion/' + newPostKey] = postData;
+    
+            firebase.database().ref().update(updates);
+            }
 </script>
 <body>
     
     <div class="text" style="margin-left:300px; margin-right: 300px;">
-        <div class="bubble2">
+        <div>
             <p>오늘의 기분을 나타내는 단어를 골라주세요</p>
         </div>
         <img src="캘린더 인공지능 듣는 중.png"
             style="position: absolute; right: 0px; bottom: 0px; padding: 0px 60px 60px 0px; width:400px; height:400px; " />
     </div>
 
-   
     <form>
-        <input type="button" value="분노"  onclick="anger()"  
-        style=" background-color: #87ceeb; width: 176px; height: 114px; margin-top: 150px; margin-left: 100px;font-size: 35px;"/>
-        <input type="button" value="행복"  onclick="happiness()"  
-        style="background-color: #87ceeb; width: 176px; height: 114px; margin-top: 150px; margin-left: 100px;font-size: 35px;"/>
-        <input type="button" value="신남"  onclick="excited()"  
-        style="background-color: #87ceeb; width: 176px; height: 114px; margin-top: 150px; margin-left: 100px;font-size: 35px;"/>
-        <input type="button" value="우울"  onclick="gloomy()"  
-        style="background-color: #87ceeb; width: 176px; height: 114px; margin-top: 150px; margin-left: 100px;font-size: 35px;"/>
-        <input type="button" value="평범"  onclick="soso()"  
-        style="background-color: #87ceeb; width: 176px; height: 114px; margin-top: 150px; margin-left: 100px;font-size: 35px;"/>
-        <input type="button" value="슬픔"  onclick="sad()"  
-        style="background-color: #87ceeb; width: 176px; height: 114px; margin-top: 150px; margin-left: 100px;font-size: 35px;"/>
+        <input type="button" value="분노" class="btn" onclick="button_angry_click()"  
+        style=" background-color: #87ceeb; width: 150px; height: 100px; margin-top: 150px; margin-left: 170px;font-size: 35px;"/>
+        <input type="button" value="행복" class="btn" onclick="button_happy_click()"  
+        style="background-color: #87ceeb; width: 150px; height: 100px; margin-top: 150px; margin-left: 100px;font-size: 35px;"/>
+        <input type="button" value="신남" class="btn" onclick="button_excited_click()"  
+        style="background-color: #87ceeb; width: 150px; height: 100px; margin-top: 150px; margin-left: 100px;font-size: 35px;"/>
+        <input type="button" value="우울" class="btn" onclick="button_depression_click()"  
+        style="background-color: #87ceeb; width: 150px; height: 100px; margin-top: 150px; margin-left: 100px;font-size: 35px;"/>
+        <input type="button" value="평범" class="btn"  onclick="button_normal_click()"  
+        style="background-color: #87ceeb; width: 150px; height: 100px; margin-top: 150px; margin-left: 100px;font-size: 35px;"/>
+        <input type="button" value="슬픔" class="btn" onclick="button_sad_click()"  
+        style="background-color: #87ceeb; width: 150px; height: 100px; margin-top: 150px; margin-left: 100px;font-size: 35px;"/>
     </form>
 </body>
 
