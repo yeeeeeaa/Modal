@@ -1,57 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="project.css">
-        <title>Document</title>
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
-        <script src="https://kit.fontawesome.com/53a8c415f1.js" crossorigin="anonymous"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-database.js"></script>
-        <script src="login_func.js"></script>
-    </head>
-    <body>
-        <!-- wrapper -->
-        <div class="wrap">
 
-            <!-- login -->
-            <div class="login">
-                <h2>로그인</h2>
-                <br />
-                <br />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="project.css">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/53a8c415f1.js" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-database.js"></script>
+    <script src="login_func.js"></script>
+</head>
+<style>
+    @font-face {
+        font-family: 'IBMPlexSansKR-Bold';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Bold.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
 
-                <form>
-                    <div class="login_id">
-                        <h4>아이디</h4>
-                        <input type="text" name="id" id="" placeholder="아이디">
+    body {
+        font-family: 'IBMPlexSansKR-Bold';
+        background-color: #87ceeb;
+        text-align: center;
+    }
+
+    .login {
+        position: absolute;
+        width: 350px;
+        height: 500px;
+        padding: 30px, 20px;
+        background-color: #FFFFFF;
+        text-align: center;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 15px;
+    }
+
+    .login h1 {
+        text-align:center;
+        margin: 40px;
+    }
+
+    .login_id {
+        border-bottom: 2px solid #adadad;
+        margin: 30px;
+        padding: 10px 10px;
+    }
+
+    .login_pw {
+        border-bottom: 2px solid #adadad;
+        margin: 30px;
+        padding: 10px 10px;
+    }
+
+    .id {
+        width: 100%;
+        border: none;
+        outline: none;
+        color: #636e72;
+        font-size: 18px;
+        height: 25px;
+        margin-left:-33px;
+        background: none;
+    }
+
+    .pw {
+        width: 100%;
+        border: none;
+        outline: none;
+        color: #636e72;
+        font-size: 16px;
+        height: 25px;
+        margin-left:-33px;
+        background: none;
+    }
+
+    .btn {
+        position: relative;
+        left: 40%;
+        transform: translateX(-50%);
+        margin-bottom: 40px;
+        width: 80%;
+        height: 40px;
+        background: linear-gradient(125deg, #81ecec, #6c5ce7, #81ecec);
+        background-position: left;
+        background-size: 200%;
+        color: white;
+        font-weight: bold;
+        font-size:20px;
+        border: none;
+        cursor: pointer;
+        transition: 0.4s;
+        display: inline;
+    }
+
+    .forgot_pw {
+        text-align: center;
+    }
+</style>
+
+<body>
+    <!-- wrapper -->
+    <div class="wrap">
+
+        <!-- login -->
+        <div class="login">
+            <h1>로그인</h1>
+            <br />
+            <form>
+                <div class="login_id">
+                    <input type="text" name="id" class="id" id="" placeholder="아이디">
+                </div>
+
+                <div class="login_pw">
+                    <input type="Password" name="pw" class="pw" id="" placeholder="비밀번호">
+                </div>
+
+                <div class="submit">
+                    <input type="button" value="제출" class="btn" onClick="login(this.form)">
+                </div>
+
+                <div class="login_etc">
+                    <div class="forgot_pw">
+                        <a href="login_join.html">회원가입</a>
                     </div>
-
-                    <div class="login_pw">
-                        <h4>비밀번호</h4>
-                        <input type="Password" name="pw"  id="" placeholder="비밀번호">
-                    </div>
-
-                    <div class="login_etc">
-                        <div class="forgot_pw">
-                            <a href="login_join.html">회원가입</a>
-                        </div>
-                    </div>
-        
-                    <div class="submit">
-                        <input type="button" value="제출" onClick="login(this.form)">
-                    </div>
-                </form>
-
-            </div>
-            <!-- login -->
+                </div>
+            </form>
 
         </div>
-        <!-- wrapper -->
+        <!-- login -->
 
-        <!-- firebase -->
-        <script>
-            var firebaseConfig = {
+    </div>
+    <!-- wrapper -->
+
+    <!-- firebase -->
+    <script>
+        var firebaseConfig = {
             apiKey: null,
             authDomain: "modal-dbe5e.firebaseapp.com",
             databaseURL: "https://modal-dbe5e-default-rtdb.firebaseio.com",
@@ -60,60 +147,61 @@
             messagingSenderId: "696208452034",
             appId: "1:696208452034:web:00b4cae826d1a7c6cc8e5b",
             measurementId: "G-9STDBTTEC7"
-            };
+        };
 
-            // Initialize Firebase
-            firebase.initializeApp(firebaseConfig);
-        </script>
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
 
-        <!-- login_function -->
-        <script>
-            
-            var DB_id_1=0;
-            var DB_id_2=0;
-            var DB_id_3=0;
-            var DB_id_4=0;
-            var DB_id_5=0;
+    <!-- login_function -->
+    <script>
 
-            var DB_pw_1=0;
-            var DB_pw_2=0;
-            var DB_pw_3=0;
-            var DB_pw_4=0;
-            var DB_pw_5=0;
+        var DB_id_1 = 0;
+        var DB_id_2 = 0;
+        var DB_id_3 = 0;
+        var DB_id_4 = 0;
+        var DB_id_5 = 0;
 
-            var fb_id_1 = firebase.database().ref("login/1/id");
-            fb_id_1.on('value', snap =>{ DB_id_1 = snap.val();});
+        var DB_pw_1 = 0;
+        var DB_pw_2 = 0;
+        var DB_pw_3 = 0;
+        var DB_pw_4 = 0;
+        var DB_pw_5 = 0;
 
-            var fb_pw_1 = firebase.database().ref("login/1/pw");
-            fb_pw_1.on('value', snap =>{ DB_pw_1 = snap.val();});
+        var fb_id_1 = firebase.database().ref("login/1/id");
+        fb_id_1.on('value', snap => { DB_id_1 = snap.val(); });
 
-            var fb_id_2 = firebase.database().ref("login/2/id");
-            fb_id_2.on('value', snap =>{ DB_id_2 = snap.val();});
+        var fb_pw_1 = firebase.database().ref("login/1/pw");
+        fb_pw_1.on('value', snap => { DB_pw_1 = snap.val(); });
 
-            var fb_pw_2 = firebase.database().ref("login/2/pw");
-            fb_pw_2.on('value', snap =>{ DB_pw_2 = snap.val();});
+        var fb_id_2 = firebase.database().ref("login/2/id");
+        fb_id_2.on('value', snap => { DB_id_2 = snap.val(); });
 
-            var fb_id_3 = firebase.database().ref("login/3/id");
-            fb_id_3.on('value', snap =>{ DB_id_3 = snap.val();});
+        var fb_pw_2 = firebase.database().ref("login/2/pw");
+        fb_pw_2.on('value', snap => { DB_pw_2 = snap.val(); });
 
-            var fb_pw_3 = firebase.database().ref("login/3/pw");
-            fb_pw_3.on('value', snap =>{ DB_pw_3 = snap.val();});
+        var fb_id_3 = firebase.database().ref("login/3/id");
+        fb_id_3.on('value', snap => { DB_id_3 = snap.val(); });
 
-            var fb_id_4 = firebase.database().ref("login/4/id");
-            fb_id_4.on('value', snap =>{ DB_id_4 = snap.val();});
+        var fb_pw_3 = firebase.database().ref("login/3/pw");
+        fb_pw_3.on('value', snap => { DB_pw_3 = snap.val(); });
 
-            var fb_pw_4 = firebase.database().ref("login/4/pw");
-            fb_pw_4.on('value', snap =>{ DB_pw_4 = snap.val();});
+        var fb_id_4 = firebase.database().ref("login/4/id");
+        fb_id_4.on('value', snap => { DB_id_4 = snap.val(); });
 
-            var fb_id_5 = firebase.database().ref("login/5/id");
-            fb_id_5.on('value', snap =>{ DB_id_5 = snap.val();});
+        var fb_pw_4 = firebase.database().ref("login/4/pw");
+        fb_pw_4.on('value', snap => { DB_pw_4 = snap.val(); });
 
-            var fb_pw_5 = firebase.database().ref("login/5/pw");
-            fb_pw_5.on('value', snap =>{ DB_pw_5 = snap.val();});
+        var fb_id_5 = firebase.database().ref("login/5/id");
+        fb_id_5.on('value', snap => { DB_id_5 = snap.val(); });
 
-            
-        </script>
-        <!-- login_function -->
+        var fb_pw_5 = firebase.database().ref("login/5/pw");
+        fb_pw_5.on('value', snap => { DB_pw_5 = snap.val(); });
 
-    </body>
+
+    </script>
+    <!-- login_function -->
+
+</body>
+
 </html>
