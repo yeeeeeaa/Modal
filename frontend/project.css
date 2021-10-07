@@ -19,21 +19,13 @@ line-height:200px;  /*세로 정렬*/
 {
 width: 1200px;
 height: 500px;
-padding: 0px;
-background: #ACDBFC;
--webkit-border-radius: 13px;
--moz-border-radius: 13px;
-border-radius: 13px;
-}
-.bubble2
-{
-width: 1300px;
-background: #ACDBFC;
+background: #87ceeb;
 -webkit-border-radius: 13px;
 -moz-border-radius: 13px;
 border-radius: 13px;
 margin-top: 100px;
 }
+
 .bubble3
 {
 width: 1300px;
@@ -90,139 +82,4 @@ li {
   align-items: center;
   justify-content: center;
   background: rgba(0, 0, 0, 0.1);
-}
-
-.login {
-  width: 30%;
-  height: 600px;
-  background: white;
-  border-radius: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.login2 {
-  width: 40%;
-  height: 700px;
-  background: white;
-  border-radius: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-h2 {
-  color: black;
-  font-size: 2em;
-}
-.login_sns {
-  padding: 20px;
-  display: flex;
-}
-
-.login_sns li {
-  padding: 0px 15px;
-}
-
-.login_sns a {
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-  border-radius: 50px;
-  background: white;
-  font-size: 20px;
-  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4), -3px -3px 5px rgba(0, 0, 0, 0.1);
-}
-
-.login_id {
-  margin-top: 20px;
-  width: 80%;
-}
-
-.login_id input {
-  width: 130%;
-  height: 50px;
-  border-radius: 30px;
-  margin-top: 10px;
-  padding: 0px 20px;
-  border: 1px solid lightgray;
-  outline: none;
-}
-
-.login_pw {
-  margin-top: 20px;
-  width: 80%;
-}
-
-.login_pw input {
-  width: 130%;
-  height: 50px;
-  border-radius: 30px;
-  margin-top: 10px;
-  padding: 0px 20px;
-  border: 1px solid lightgray;
-  outline: none;
-}
-
-.login_join {
-  margin-top: 20px;
-  width: 160%;
-}
-
-.login_join input {
-  width: 130%;
-  height: 50px;
-  border-radius: 30px;
-  margin-top: 10px;
-  padding: 0px 20px;
-  border: 1px solid lightgray;
-  outline: none;
-}
-
-.login_etc {
-  padding: 10px;
-  width: 80%;
-  font-size: 14px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-weight: bold;
-}
-
-.submit {
-  margin-top: 50px;
-  width: 80%;
-}
-.submit input {
-  width: 100%;
-  height: 50px;
-  border: 0;
-  outline: none;
-  border-radius: 40px;
-  background: linear-gradient(to left, #00BFFF, #87ceeb);
-  color: white;
-  font-size: 1.2em;
-  letter-spacing: 2px;
-}
-.submit_join {
-  margin-top: 50px;
-  width: 80%;
-  padding-left:20%
-}
-.submit_join input {
-  width: 270%;
-  height: 50px;
-  border: 0;
-  outline: none;
-  border-radius: 40px;
-  background: linear-gradient(to left, #00BFFF, #87ceeb);
-  color: white;
-  font-size: 1.2em;
-  letter-spacing: 2px;
 }
