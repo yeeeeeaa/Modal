@@ -130,7 +130,9 @@
             fbDate=pickedDate();
         }
 
-
+        function alertSch(){
+            alert(pickedDate()+"일의 일정: 은행 가기");
+        }
         
 
     </script>
@@ -167,8 +169,8 @@
     
     
 </script>
-<p id="selectedDates">일정 확인</p>
 
+<button id="alertSch" onClick="alertSch()"><p id="selectedDates">일정 확인</p></button>
 
 
 
@@ -176,7 +178,7 @@
 
 <script>
 var firebaseConfig = {
-        	    apiKey: "AIzaSyC7Y4NQcEyj1j3hm2xgf3jrN5kAW4B-vgc",
+        	    apiKey: null,
                 authDomain: "modal-dbe5e.firebaseapp.com",
                 databaseURL: "https://modal-dbe5e-default-rtdb.firebaseio.com",
                 projectId: "modal-dbe5e",
