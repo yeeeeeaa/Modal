@@ -3,13 +3,6 @@ import os
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
-
-cred = credentials.Certificate("/home/pi/speech/modal-dbe5e-firebase-adminsdk-k64o9-bf81f0cd3a.json")
-firebase_admin.initialize_app(cred, {'databaseURL': 'https://modal-dbe5e-default-rtdb.firebaseio.com/'})
-
-credential_path="/home/pi/speech/modal-324900-dadc152185c5.json"
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credential_path
-
 ref = db.reference('김철수')
 row = str(ref.get())
 
