@@ -15,11 +15,31 @@
       }
       body{
         font-family: 'IBMPlexSansKR-SemiBold';
+        background-color:rgb(235, 247, 255);
       }
+      .btn1{
+        width:50px;
+        height:50px;
+        text-align: center;
+        font-size:20px;
+        background-color: #FFFFFF;
+        border: solid 2px #87ceeb;
+        border-radius: 300px;
+      }
+      .btn2{
+        width:130px;
+        height:50px;
+        text-align: center;
+        font-size:20px;
+        background-color: #FFFFFF;
+        border: solid 2px #87ceeb;
+        border-radius: 20px;
+      }
+      
     </style>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
       <title>달력</title>
-
+        )
     <script>
       window.onload=function(){
         day = new Date();
@@ -32,11 +52,11 @@
 
   <body>
 
-    <input type="button" value="<" onclick="week_calandar(-1)" />
-    <input type="button" value="새로고침" onclick="week_calandar(0)" />
-    <input type="button" value=">" onclick="week_calandar(1)" />
+    <input type="button" value="◀" class="btn1" onclick="week_calandar(-1)" />
+    <input type="button" value="새로고침" class="btn2" onclick="week_calandar(0)" />
+    <input type="button" value="▶" class="btn1" onclick="week_calandar(1)" />
 
-    <p id="calandar"; style="font-size:50px";></p>
+    <p id="calandar"; style="font-size:35px";></p>
 
     <a href="../DailyCalender.html">    
         <button type="button" onClick="connect_weekly_monthly()">8월 일간 달력으로 이동</button>
