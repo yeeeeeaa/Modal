@@ -176,12 +176,12 @@ function week_calandar(week) {
 
             data += day.getDate() + "   "+ ment +"<br />"+"<hr />";
             if(day.getDate() == 1)
-                title += " ~ " + day.getFullYear() + "/" + (day.getMonth()+1);
+                title += " ~ " + day.getFullYear()  + "년" + (day.getMonth()+1)+ "월";
             day.setDate(day.getDate()+1);
             fb_route+=1;
             }
     day.setDate(day.getDate()-7);
-    document.getElementById("calandar").innerHTML = title + "<br />" + data;
+    document.getElementById("calandar").innerHTML = title +"<br/>"+ "<br />" + data;
     }
 
     function set_day() {
