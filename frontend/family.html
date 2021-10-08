@@ -17,8 +17,9 @@
 
 <style>
 	body{
-        background-color:transparent;;
-        color:black;
+        height: 100vh;
+        margin: 0;
+    background: linear-gradient(90deg, rgb(235, 247, 255) 50%, #ffffff 50%);
         font-family:'IBMPlexSansKR-Bold';
     }
     @font-face {
@@ -50,10 +51,14 @@ display: none;
 <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-database.js"></script>
 </head>
 <body>
-    <center>
-    <h1>김철수님의 일정을 추가합니다.</h1>
-    <form>
-        <select id="month" style="font-size:15pt">
+    <br><br>
+    <h1 align="center">김철수님의 일정을 추가합니다.
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;어떤 일정을 추가할까요?</h1>
+    
+    <form style="margin-left: 400px; margin-top: 100px; float:left;">
+        <select id="month" style="font-size:30pt">
             <option>01</option>
             <option>02</option>
             <option>03</option>
@@ -67,9 +72,12 @@ display: none;
             <option>11</option>
             <option>12</option>
         </select>
-        <p style="font-size: 30px;">월</p>
+        <span style="font-size: 5em;">&nbsp;월</span>
+        <br>
+        <br>
+        <br>
     
-        <select id="day" style="font-size:15pt">
+        <select id="day" style="font-size:30pt">
             <option>01</option>
             <option>02</option>
             <option>03</option>
@@ -102,22 +110,20 @@ display: none;
             <option>30</option>
             <option>31</option>
         </select>
-        <p style="font-size: 30px;">일</p>
+        <span style="font-size: 5em;">&nbsp;일</span>
+ 
     </form>
-   
-   <h2>
-        어떤 일정을 추가할까요?
-   </h2>
-
-    <p><textarea id="schedules" cols="30" rows="5" style= "font-family:'IBMPlexSansKR-Bold';font-size:20pt;"></textarea></p>
-    </center>
+    <div style="margin-left: 250px; float:left;">
+        <p><textarea id="schedules" cols="30" rows="10" style= "font-family:'IBMPlexSansKR-Bold';font-size:20pt; float: inline-end;"></textarea></p>
+        </div>
 
     <div align="right">
-    <button id="addScd"style="font-family:'IBMPlexSansKR-Bold'; font-size:15pt; background: #87ceeb;
-        padding:20px 15px; border-radius: 10%;
+    <button id="addScd"style="font-family:'IBMPlexSansKR-Bold'; font-size:15pt; background: rgb(235, 247, 255);
+        padding:20px 15px; margin-bottom: 20px; margin-right: 20px; border-radius: 10%;
     " onClick="addSchedule()">일정 추가</button>
-    <button style="font-family:'IBMPlexSansKR-Bold'; font-size:15pt; background:#87ceeb;
-        padding:20px 15px; border-radius: 10%;
+    <br>
+    <button style="font-family:'IBMPlexSansKR-Bold'; font-size:15pt; background:rgb(235, 247, 255);
+        padding:20px 15px; border-radius: 10%; margin-right: 20px;
     ">일정 확인하기</button>
     </div>
 
