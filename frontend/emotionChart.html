@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>감정 통계입니다.</title>
+
+<style>
+@font-face {
+            font-family: 'IBMPlexSansKR-Bold';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Bold.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+span{
+    position: absolute;
+    display: inline-block;
+    width:60px;
+    bottom:0;
+}
+div{
+    position:relative;
+    height:400px;
+    border: 1px solid #FFF;
+}
+
+span:nth-of-type(1){height:100%;    left:0px;}
+span:nth-of-type(2){height:100%;    left:70px;}
+span:nth-of-type(3){height:100%;    left:140px;}
+span:nth-of-type(4){height:100%;    left:210px;}
+span:nth-of-type(5){height:100%;    left:280px;}
+span:nth-of-type(6){height:100%;    left:350px;}
+
+body{
+    background: #87ceeb;
+    font-family: 'IBMPlexSansKR-Bold';
+}
+.red{
+    background:#fc0b03;
+}
+
+.orange{
+    background:#ff700a;
+}
+
+.yellow{
+    background: #f2d516;
+}
+
+.green{
+    background: #26d134;
+}
+
+.blue{
+    background: #1835f2;
+}
+.purple{
+    background: #9d26ed;
+}
+
+div{  
+    margin:50px 50px;
+}
+span{
+    font-size:20px;
+    line-height:1.8em;
+    color:#FFF;
+    text-align:center;
+    border-radius:15px;
+}
+</style>
+
+</head>
+<body>
+    <div>
+        <span class="red"       data-val='10'>분노</span>
+        <span class="orange"    data-val='30'>행복</span>
+        <span class="yellow"    data-val='40'>신남</span>
+        <span class="green"     data-val='100'>우울</span>
+        <span class="blue"      data-val='70'>평범</span>
+        <span class="purple"    data-val='50'>슬픔</span>
+    </div>
+ 
+
+</body>
+
+
+</html>
