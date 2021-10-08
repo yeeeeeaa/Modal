@@ -53,14 +53,6 @@
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
 
-        var firebase_page_check = firebase.database().ref('page_num');
-
-        firebase_page_check.on('value', snap =>{
-            var page_num_test = snap.val();
-            if(page_num_test == 2){
-                goSixthPg.click();
-            }
-});
 
 
 </script>
