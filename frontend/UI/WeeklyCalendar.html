@@ -1,42 +1,64 @@
 <!DOCTYPE html>
 <html>
-<head>
-<script src="./func.js"></script>
-<style>
-@font-face {
-    font-family: 'IBMPlexSansKR-SemiBold';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-SemiBold.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-body{
-  font-family: 'IBMPlexSansKR-SemiBold';
-}
-</style>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>달력</title>
-<script>
-	window.onload=function(){
-		day = new Date();
-    	day.setDate(day.getDate()-day.getDay());
-    	week_calandar(0);
-	}
-</script>
-</head>
-<body>
-<input type="button" value="<" onclick="week_calandar(-1)" />
+  <head>
 
-<input type="button" value=">" onclick="week_calandar(1)" />
+    <script src="./func.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-database.js"></script>
 
+    <style>
+      @font-face {
+          font-family: 'IBMPlexSansKR-SemiBold';
+          src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-SemiBold.woff') format('woff');
+          font-weight: normal;
+          font-style: normal;
+      }
+      body{
+        font-family: 'IBMPlexSansKR-SemiBold';
+      }
+    </style>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>달력</title>
 
-<p id="calandar"; style="font-size:50px";></p>
-<script language="JavaScript">
+    <script>
+      window.onload=function(){
+        day = new Date();
+          day.setDate(day.getDate()-day.getDay());
+          week_calandar(0);
+      }
+    </script>
+    
+  </head>
 
+  <body>
 
-</script>
-<a href="../DailyCalender.html">    
-  <button type="button" onClick="connect_weekly_monthly()">8월 일간 달력으로 이동</button>
-  </a>
+    <input type="button" value="<" onclick="week_calandar(-1)" />
+    <input type="button" value="새로고침" onclick="week_calandar(0)" />
+    <input type="button" value=">" onclick="week_calandar(1)" />
 
-</body>
+    <p id="calandar"; style="font-size:50px";></p>
+
+    <a href="../DailyCalender.html">    
+        <button type="button" onClick="connect_weekly_monthly()">8월 일간 달력으로 이동</button>
+    </a>
+
+    <script>
+        var firebaseConfig = {
+        apiKey: null,
+        authDomain: "modal-dbe5e.firebaseapp.com",
+        databaseURL: "https://modal-dbe5e-default-rtdb.firebaseio.com",
+        projectId: "modal-dbe5e",
+        storageBucket: "modal-dbe5e.appspot.com",
+        messagingSenderId: "696208452034",
+        appId: "1:696208452034:web:00b4cae826d1a7c6cc8e5b",
+        measurementId: "G-9STDBTTEC7"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <script>
+    </script>
+  </body>
 </html>
