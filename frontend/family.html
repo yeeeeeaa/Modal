@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="family.js">
+<script src="family.js"></script>
 <meta charset="UTF-8">
-<!-- 캐시 삭제 -->
+
 <meta http-equiv="Expires" content="Mon, 06 Jan 1990 00:00:01 GMT"/>
 <meta http-equiv="Expires" content="-1"/>
 <meta http-equiv="Pragma" content="no-cache"/>
@@ -13,11 +13,11 @@
 
 <link rel="stylesheet">
 
-<title>가족 계정입니다/</title>
+<title>가족 계정 추가</title>
 
 <style>
 	body{
-        background-color:#87ceeb;
+        background-color:transparent;;
         color:black;
         font-family:'IBMPlexSansKR-Bold';
     }
@@ -53,7 +53,7 @@ display: none;
     <center>
     <h1>김철수님의 일정을 추가합니다.</h1>
     <form>
-        <select id="month" style="font-size:25pt">
+        <select id="month" style="font-size:15pt">
             <option>01</option>
             <option>02</option>
             <option>03</option>
@@ -67,9 +67,9 @@ display: none;
             <option>11</option>
             <option>12</option>
         </select>
-        월
+        <p style="font-size: 30px;">월</p>
     
-        <select id="day" style="font-size:25pt">
+        <select id="day" style="font-size:15pt">
             <option>01</option>
             <option>02</option>
             <option>03</option>
@@ -102,22 +102,21 @@ display: none;
             <option>30</option>
             <option>31</option>
         </select>
-        일
+        <p style="font-size: 30px;">일</p>
     </form>
    
    <h2>
         어떤 일정을 추가할까요?
    </h2>
 
-    <p><textarea id="schedules" cols="30" rows="5" style= "font-family:'IBMPlexSansKR-Bold';font-size:20pt;
-        background:url('gray_modal.jpg');";></textarea></p>
+    <p><textarea id="schedules" cols="30" rows="5" style= "font-family:'IBMPlexSansKR-Bold';font-size:20pt;"></textarea></p>
     </center>
 
     <div align="right">
-    <button id="addScd"style="font-family:'IBMPlexSansKR-Bold'; font-size:15pt; background:#03b1fc;
+    <button id="addScd"style="font-family:'IBMPlexSansKR-Bold'; font-size:15pt; background: #87ceeb;
         padding:20px 15px; border-radius: 10%;
     " onClick="addSchedule()">일정 추가</button>
-    <button style="font-family:'IBMPlexSansKR-Bold'; font-size:15pt; background:#03b1fc;
+    <button style="font-family:'IBMPlexSansKR-Bold'; font-size:15pt; background:#87ceeb;
         padding:20px 15px; border-radius: 10%;
     ">일정 확인하기</button>
     </div>
