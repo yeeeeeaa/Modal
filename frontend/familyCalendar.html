@@ -193,7 +193,7 @@
 <button id="input1" id="alertSch" onClick="alertSch()"><p id="selectedDates" >일정 확인</p></button>
 
 <a href="Emotion.html">
-    <button type="button" class="btn3" onClick="connect_monthly_Emotion()">감정 확인</button>
+    <button id="moveEmotion" type="button" class="btn3" onClick="connect_monthly_Emotion()">감정 확인</button>
   </a>
 
 
@@ -213,7 +213,6 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-
 var firebaseSchedule=firebase.database().ref(family/211009/은행 가기/내용);
 
 firebaseSchedule.on('value',snap=>{
@@ -223,9 +222,24 @@ firebaseSchedule.on('value',snap=>{
     }
 });
 
+var firebase_page_check = firebase.database().ref('page_num');
 
+firebase_page_check.on('value', snap =>{
+     var page_num_test = snap.val();
+     if(page_num_test == 1){
+        moveDaily.click();
+     }
+});
+
+var firebase_page_check = firebase.database().ref('page_num');
+
+firebase_page_check.on('value', snap =>{
+     var page_num_test = snap.val();
+     if(page_num_test == 2){
+        moveEmotion.click();
+     }
+});
 
 </script>
 </body>
 </html>
-
