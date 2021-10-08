@@ -6,7 +6,7 @@
         td{
             background-color: rgb(235, 247, 255);
             width: 170px;
-            height: 80px;
+            height: 90px;
             text-align: center;
             font-size: 20px;
             font-family: 'IBMPlexSansKR-Bold';
@@ -165,8 +165,14 @@
 </head>
 <body>
     <p></p>
+    
+<button id="input1" id="alertSch" style="float:right; margin-left:10px;" onClick="alertSch()"><p id="selectedDates" >일정 확인</p></button>
+
+<a href="Emotion.html">
+    <button id="moveEmotion" type="button" class="btn3"style="float:right; margin-left:10px;" onClick="connect_monthly_Emotion()">감정 확인</button>
+  </a>
     <a href="family.html">이전 페이지로 돌아가기</a>
-<table id="calendar" border="1" align="center" style="border-color: transparent;" style="border-color: transparent">
+<table id="calendar" border="3" align="center" style="border-color: transparent; margin-right:100px;">
     <tr><!-- label은 마우스로 클릭을 편하게 해줌 -->
         <td><label onclick="prevCalendar()">◀</label></td>
         <td align="center" id="tbCalendarYM" colspan="5">
@@ -190,11 +196,6 @@
     
 </script>
 
-<button id="input1" id="alertSch" onClick="alertSch()"><p id="selectedDates" >일정 확인</p></button>
-
-<a href="Emotion.html">
-    <button id="moveEmotion" type="button" class="btn3" onClick="connect_monthly_Emotion()">감정 확인</button>
-  </a>
 
 
 <!--firebase와 연동-->
@@ -213,7 +214,7 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-var firebaseSchedule=firebase.database().ref(family/211009/은행 가기/내용);
+var firebaseSchedule=firebase.database().ref(family/211009/은행가기/내용);
 
 firebaseSchedule.on('value',snap=>{
     var fbSch=snap.val();
