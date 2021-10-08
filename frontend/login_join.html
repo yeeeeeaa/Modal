@@ -2,7 +2,7 @@
 <html lnag="ko">
     <head>
         <meta charset="UTF-8">
-        <title>네이버 : 회원가입</title>
+        <title>회원가입</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="project.css">
         <title>Document</title>
@@ -28,11 +28,11 @@
         .login2{
             position:absolute;
             width:350px;
-            height:550px;
+            height:600px;
             padding: 30px, 20px;
             background-color:#FFFFFF;
             text-align:center;
-            top:40%;
+            top:50%;
             left:50%;
             transform: translate(-50%,-50%);
             border-radius: 15px;
@@ -122,6 +122,12 @@
                         <input type="email" name="e_email" id="e_email" class="int" maxlength="20" placeholder="감정 분석 결과 수신 이메일">
                     </div>
 
+                    <!-- 사용자 구분 -->
+                    <div class="login_join">
+                    
+                        <input type="text" name="user" id="user" class="int" maxlength="20" placeholder="본인/가족 중 해당 사항 ex) 가족">
+                    </div>
+
                     <!-- JOIN BUTTON-->
                     <div class="submit_join">
                         <input type="button" value="가입하기" class="btn" onClick="login_join(this.form)">
@@ -180,7 +186,6 @@
 
             var fb_id_5 = firebase.database().ref("login/5/id");
             fb_id_5.on('value', snap => { DB_id_5 = snap.val(); });
-
 
         </script>
     </body>
