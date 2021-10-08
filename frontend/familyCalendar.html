@@ -4,20 +4,30 @@
     <title>달력</title>
     <style type="text/css">
         td{
-            width: 50px;
-            height: 50px;
+            background-color: rgb(235, 247, 255);
+            width: 170px;
+            height: 80px;
             text-align: center;
             font-size: 20px;
             font-family: 'IBMPlexSansKR-Bold';
-            border:2px border-color:#3333FF;
-            border-radius: 8px;/*모서리 둥글게*/
+
         }
         @font-face {
             font-family: 'IBMPlexSansKR-Bold';
             src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Bold.woff') format('woff');
             font-weight: normal;
             font-style: normal;
+            
         }
+        #input1 {
+        background-color: #FFFFFF;
+    	width: 100px;
+        height: 50px;
+        border-top: 3px solid #87ceeb;
+        border-left: 3px solid #87ceeb;
+        border-right: 3px solid #87ceeb;
+        border-bottom : 3px solid #87ceeb;
+    }
     </style>
 <script type="text/javascript">
         var dayCnt=0;   //클릭시 일정 확인하게 해주는 변수
@@ -145,8 +155,7 @@
 <body>
     <p></p>
     <a href="family.html">이전 페이지로 돌아가기</a>
-    <h3 align="center">가족 계정의 달력입니다.</h3>
-<table id="calendar" border="3" align="center" style="border-color:#3333FF ">
+<table id="calendar" border="1" align="center" style="border-color: transparent;" style="border-color: transparent">
     <tr><!-- label은 마우스로 클릭을 편하게 해줌 -->
         <td><label onclick="prevCalendar()">◀</label></td>
         <td align="center" id="tbCalendarYM" colspan="5">
@@ -170,7 +179,7 @@
     
 </script>
 
-<button id="alertSch" onClick="alertSch()"><p id="selectedDates">일정 확인</p></button>
+<button id="input1" id="alertSch" onClick="alertSch()"><p id="selectedDates" >일정 확인</p></button>
 
 
 
