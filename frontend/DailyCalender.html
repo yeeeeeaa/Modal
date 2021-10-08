@@ -116,6 +116,8 @@ p::before {
                 <div style="float:left; margin-top: 0px; margin-right: 30px;" id="daytitle"></div>
                 <input id="input2" type="button" style="float:left; margin-left: 0px;"  value=">" onclick="nextd()" id="next">
                 <input id="input1" type="button" style="float:left; margin-left: 500px;" value="새로고침" onclick="build()">
+                <button id="goSecondPg" class="custom_button button_detail"
+					onclick="location.href='Emotion.html'"></button>
             </div>
         
             
@@ -135,6 +137,15 @@ p::before {
         
                 // Initialize Firebase
                 firebase.initializeApp(firebaseConfig);
+
+                var firebase_page_check = firebase.database().ref('page_num');
+
+                firebase_page_check.on('value', snap =>{
+                var page_num_test = snap.val();
+                if(page_num_test == 2){
+                    goSecondPg.click();
+                }
+                });
             </script>
 
             <script>
