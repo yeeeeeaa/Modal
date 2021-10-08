@@ -25,12 +25,14 @@ div{
     border: 1px solid #FFF;
 }
 
-span:nth-of-type(1){height:100%;    left:0px;}
+span:nth-of-type(1){height:50%;    left:0px;}
 span:nth-of-type(2){height:100%;    left:70px;}
-span:nth-of-type(3){height:100%;    left:140px;}
-span:nth-of-type(4){height:100%;    left:210px;}
+span:nth-of-type(3){height:30%;    left:140px;}
+span:nth-of-type(4){height:50%;    left:210px;}
 span:nth-of-type(5){height:100%;    left:280px;}
 span:nth-of-type(6){height:100%;    left:350px;}
+
+   
 
 body{
     background: #87ceeb;
@@ -73,17 +75,112 @@ span{
 
 </head>
 <body>
+
+
     <div>
-        <span class="red"       data-val='10'>분노</span>
-        <span class="orange"    data-val='30'>행복</span>
-        <span class="yellow"    data-val='40'>신남</span>
-        <span class="green"     data-val='100'>우울</span>
-        <span class="blue"      data-val='70'>평범</span>
-        <span class="purple"    data-val='50'>슬픔</span>
+        <span class="red"       data-val='anger'>분노</span>
+        <span class="orange"    data-val='happiness'>행복</span>
+        <span class="yellow"    data-val='excited'>신남</span>
+        <span class="green"     data-val='gloomy'>우울</span>
+        <span class="blue"      data-val='soso'>평범</span>
+        <span class="purple"    data-val='sad'>슬픔</span>
     </div>
+
+    <div align="center">
+        <br><br><br><br>
+		<font size=5> 분노 : </font> <font id="angerPrint" size=5> </font>		
+		<br>
+		<font size=5> 행복 : </font> <font id="happinessPrint" size=5> </font>
+        <br>
+        <font size=5> 신남 : </font> <font id="excitedPrint" size=5> </font>
+        <br>
+        <font size=5> 우울 : </font> <font id="gloomyPrint" size=5> </font>
+        <br>
+        <font size=5> 평범 : </font> <font id="sosoPrint" size=5> </font>
+        <br>
+        <font size=5> 슬픔 : </font> <font id="sadPrint" size=5> </font>
+        <br>
+	</div>
  
 
+
+<script type="text/javascript" src="emotion.js"></script>
+<!-- 파이어베이스 연동 -->
+<script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-database.js"></script>
+
+<script>
+    // Initialize Firebase
+    var firebaseConfig = {
+        apiKey: "AIzaSyC7Y4NQcEyj1j3hm2xgf3jrN5kAW4B-vgc",
+         authDomain: "modal-dbe5e.firebaseapp.com",
+         databaseURL: "https://modal-dbe5e-default-rtdb.firebaseio.com",
+         projectId: "modal-dbe5e",
+         storageBucket: "modal-dbe5e.appspot.com",
+         messagingSenderId: "696208452034",
+         appId: "1:696208452034:web:00b4cae826d1a7c6cc8e5b",
+         measurementId: "G-9STDBTTEC7"
+    };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+  var firebase_anger_check = firebase.database().ref('emotion/anger');
+  var firebase_excited_check = firebase.database().ref('emotion/excited');
+  var firebase_gloomy_check = firebase.database().ref('emotion/gloomy');
+  var firebase_happiness_check = firebase.database().ref('emotion/happiness');
+  var firebase_sad_check = firebase.database().ref('emotion/sad');
+  var firebase_soso_check = firebase.database().ref('emotion/soso');
+
+ // 분노 cnt값 html에 표기
+var angerPrint = document.getElementById("angerPrint");
+var dbRef = firebase.database().ref().child("emotion/anger");
+dbRef.on('value',snap => angerPrint.innerHTML = snap.val());
+ 
+
+ //행복 cnt값 html에 표기
+var happinessPrint = document.getElementById("happinessPrint");
+var dbRef = firebase.database().ref().child("emotion/happiness");
+dbRef.on('value',snap => happinessPrint.innerHTML = snap.val());
+
+ //신남 cnt값 html에 표기
+var excitedPrint = document.getElementById("excitedPrint");
+var dbRef = firebase.database().ref().child("emotion/excited");
+dbRef.on('value',snap => excitedPrint.innerHTML = snap.val());
+
+ // 우울 cnt값 html에 표기
+var gloomyPrint = document.getElementById("gloomyPrint");
+var dbRef = firebase.database().ref().child("emotion/gloomy");
+dbRef.on('value',snap => gloomyPrint.innerHTML = snap.val());
+
+ // 평범 cnt값 html에 표기
+var sosoPrint = document.getElementById("sosoPrint");
+var dbRef = firebase.database().ref().child("emotion/soso");
+dbRef.on('value',snap => sosoPrint.innerHTML = snap.val());
+
+ // 슬픔 cnt값 html에 표기
+var sadPrint = document.getElementById("sadPrint");
+var dbRef = firebase.database().ref().child("emotion/sad");
+dbRef.on('value',snap => sadPrint.innerHTML = snap.val());
+
+ //감정 카운트 값을 백분율로 바꾸기
+ //분노
+ //percentAnger=emotionAnger/(emotionAnger+emotionHappiness+emotionExcited+emotionGloomy+emotionSoso+emotionSad)*100
+ 
+ //행복
+ //percentHappiness=emotionHappiness/(emotionAnger+emotionHappiness+emotionExcited+emotionGloomy+emotionSoso+emotionSad)*100
+  
+  //신남
+ //percentExcited=emotionExcited/(emotionAnger+emotionHappiness+emotionExcited+emotionGloomy+emotionSoso+emotionSad)*100
+  
+  //우울
+ //percentGloomy=emotionGloomy/(emotionAnger+emotionHappiness+emotionExcited+emotionGloomy+emotionSoso+emotionSad)*100
+  
+  //슬픔
+ //percentSad=emotionSad/(emotionAnger+emotionHappiness+emotionExcited+emotionGloomy+emotionSoso+emotionSad)*100
+  
+  //평범
+ //percentSoso=emotionSoso/(emotionAnger+emotionHappiness+emotionExcited+emotionGloomy+emotionSoso+emotionSad)*100
+
+</script>
 </body>
-
-
 </html>
