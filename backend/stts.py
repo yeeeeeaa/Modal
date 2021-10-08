@@ -3,7 +3,11 @@ import os
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
+
+
 ref = db.reference('김철수')
+mood_db = db.reference('emotion')
+page_db = db.reference()
 row = str(ref.get())
 
 import schedule
@@ -25,7 +29,7 @@ def day_add(target, change):
     dDay=month_day(target)
     start = target.find('일') + 1
     target_summarize=target[start:]
-    print(dDay)
+    page_db.update({'page_num': '1'})
     users_ref=ref.child(dDay)
     users_ref.update({
         target_summarize:{
@@ -42,7 +46,7 @@ def day_add(target, change):
 def day_check(target):
     dDay = month_day(target)
     users_ref = str(ref.child(dDay).get())
-    print(users_ref)
+    page_db.update({'page_num': '1'})
     if users_ref == "None":
         run_quickstart("해당 날짜에는 일정이 존재하지 않습니다")
     elif users_ref != "None":
@@ -66,7 +70,7 @@ def day_change(target):
         
 def day_delete(target, change):
     dDay = month_day(target)
-    print(dDay)
+    page_db.update({'page_num': '1'})
     users_ref = str(ref.child(dDay).get())
     if users_ref == "None":
         run_quickstart("해당 날짜에는 일정이 존재하지 않습니다")
@@ -94,15 +98,9 @@ def month_day(target):
     return dDay
 
 def mood_add(emoji):
-    d = datetime.now()
-    month = str(d.month)
-    day = str(d.day)
-    if len(month) == 1:
-        month = '0'+month
-    if len(day) == 1:
-        day = '0'+day
-    dDay = '21'+month+day
-    ref.child(dDay).set({'감정' : emoji})
+    print(emoji)
+    a = int(mood_db.child(emoji).get())
+    mood_db.update({emoji: a+1})
         
 def run_quickstart(tts_text):
     # [START tts_quickstart]
@@ -149,10 +147,11 @@ def time_job_emotion():
     d = datetime.now()
     hour = d.hour
     minute = d.minute
-    if hour == 10 and minute == 28 and emotion:
+    if hour == 18 and minute == 1 and emotion:
+        page_db.update({'page_num': '2'})
         run_quickstart("오늘의 기분은 어떠신가요?")
         return False
-    elif hour != 10 or minute != 28 :
+    elif hour != 18 or minute != 1 :
         return True
     
 def time_job_check():
@@ -179,15 +178,14 @@ def ai_train():
     d = datetime.now()
     day = d.day
     nowTime = d.strftime('%H.%M')
-    print(nowTime)
-    if day == 7 and nowTime == "23.06" and ai:
+    if day == 8 and nowTime == "17.18" and ai:
         os.system("sudo python ai.py>day_return.txt")
         with open('day_return.txt', 'r') as file:
             b = file.readline()
         print(b)
         run_quickstart(b)
         return False
-    elif nowTime != "23.06":
+    elif nowTime != "17.18":
         return True
         
 
@@ -233,17 +231,17 @@ if __name__=="__main__":
             
         if emotion == False:
             if '행복' in target:
-                mood_add('행복')
+                mood_add('happiness')
             elif '신남' in target:
-                mood_add('신남')
+                mood_add('excited')
             elif '평범' in target:
-                mood_add('평범')
+                mood_add('soso')
             elif '슬픔' in target:
-                mood_add('슬픔')
+                mood_add('sad')
             elif '우울' in target:
-                mood_add('우울')
+                mood_add('gloomy')
             elif '분노' in target:
-                mood_add('분노')
+                mood_add('anger')
     
     print('sucess')
         
