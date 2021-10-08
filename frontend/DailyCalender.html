@@ -3,7 +3,44 @@
 <html>
 
 <head>
-
+    <style>
+        @font-face {
+            font-family: 'IBMPlexSansKR-Bold';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Bold.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+       div {
+            font-family: 'IBMPlexSansKR-Bold';
+            font-size:50px;
+            margin-top:50px; 
+            margin-left:30px;
+            text-align: center;
+            background-color: #FFFFFF;
+            border-radius: 0.3em;
+        }
+        .btn{
+            font-family: 'IBMPlexSansKR-Bold';
+        }
+        #input1 {
+        background-color: #FFFFFF;
+    	width: 100px;
+        height: 50px;
+        border-top: 3px solid #87ceeb;
+        border-left: 3px solid #87ceeb;
+        border-right: 3px solid #87ceeb;
+        border-bottom : 3px solid #87ceeb;
+    }
+    #input2 {
+        background-color: #FFFFFF;
+    	width: 100px;
+        height: 50px;
+        border-top: 3px solid #87ceeb;
+        border-left: 3px solid #87ceeb;
+        border-right: 3px solid #87ceeb;
+        border-bottom : 3px solid #87ceeb;
+    }
+    </style>
     <script type="text/javascript">
 
 
@@ -23,9 +60,11 @@
 </head>
 
 <body>
-    <input type="button" value="<" onclick="getCurrentDate(-1);">
-    <div id="data"></div> 
-    <input type="button" value=">" onclick="getCurrentDate(1);">
+    <div id="btn_group">
+        <input id="input1" type="button" style="float:left; margin-left: 500px;" value="<" onclick="getCurrentDate(-1);">
+        <div style="float:left; margin-top: 0px; margin-right: 30px;" id="data"></div>
+        <input id="input2" type="button" style="float:left; margin-left: 0px;"  value=">" onclick="getCurrentDate(1);">
+    </div>
 </body>
 
 </html>
