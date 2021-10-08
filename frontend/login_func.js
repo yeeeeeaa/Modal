@@ -2,31 +2,46 @@ function login(form){
 
     if (form.id.value==DB_id_1) {
         if(form.pw.value==DB_pw_1){
-            location='UI/MonthlyCalendar.html'
+            if(DB_user_1=="본인"){
+                location='DailyCalender.html' 
+            }
+            else location='familyCalendar.html'
         }
         else alert("비밀번호가 틀렸습니다.")
     } 
     else if (form.id.value==DB_id_2) {
         if(form.pw.value==DB_pw_2){
-            location='UI/MonthlyCalendar.html'
+            if(DB_user_2=="본인"){
+                location='DailyCalender.html' 
+            }
+            else location='familyCalendar.html'
         }
         else alert("비밀번호가 틀렸습니다.")
     }
     else if (form.id.value==DB_id_3) {
         if(form.pw.value==DB_pw_3){
-            location='UI/MonthlyCalendar.html'
+            if(DB_user_3=="본인"){
+                location='DailyCalender.html' 
+            }
+            else location='familyCalendar.html'
         }
         else alert("비밀번호가 틀렸습니다.")
     }
     else if (form.id.value==DB_id_4) {
         if(form.pw.value==DB_pw_4){
-            location='UI/MonthlyCalendar.html'
+            if(DB_user_4=="본인"){
+                location='DailyCalender.html' 
+            }
+            else location='familyCalendar.html'
         }
         else alert("비밀번호가 틀렸습니다.")
     }
     else if (form.id.value==DB_id_5) {
         if(form.pw.value==DB_pw_5){
-            location='UI/MonthlyCalendar.html'
+            if(DB_user_5=="본인"){
+                location='DailyCalender.html' 
+            }
+            else location='familyCalendar.html'
         }
         else alert("비밀번호가 틀렸습니다.")
     }
@@ -48,6 +63,7 @@ function login_join(form){
                         fb_profile.child("name").set(form.name.value);
                         fb_profile.child("email").set(form.email.value);
                         fb_profile.child("emotion_email").set(form.e_email.value);
+                        fb_profile.child("구분").set(form.user.value);
                         
                         alert("회원가입이 완료되었습니다.")
                         location.replace('login.html');
@@ -57,6 +73,7 @@ function login_join(form){
                             var fb_profile = firebase.database().ref(fb_set);
                             fb_profile.child("id").set(form.id.value);
                             fb_profile.child("pw").set(form.pswd1.value);
+                            fb_profile.child("구분").set(form.user.value);
 
                         }
                         else if(DB_id_2==null){
@@ -64,24 +81,28 @@ function login_join(form){
                             var fb_profile = firebase.database().ref(fb_set);
                             fb_profile.child("id").set(form.id.value);
                             fb_profile.child("pw").set(form.pswd1.value);
+                            fb_profile.child("구분").set(form.user.value);
                         }
                         else if(DB_id_3==null){
                             var fb_set='login'+'/'+3
                             var fb_profile = firebase.database().ref(fb_set);
                             fb_profile.child("id").set(form.id.value);
                             fb_profile.child("pw").set(form.pswd1.value);
+                            fb_profile.child("구분").set(form.user.value);
                         }
                         else if(DB_id_4==null){
                             var fb_set='login'+'/'+4
                             var fb_profile = firebase.database().ref(fb_set);
                             fb_profile.child("id").set(form.id.value);
                             fb_profile.child("pw").set(form.pswd1.value);
+                            fb_profile.child("구분").set(form.user.value);
                         }
                         else if(DB_id_5==null){
                             var fb_set='login'+'/'+5
                             var fb_profile = firebase.database().ref(fb_set);
                             fb_profile.child("id").set(form.id.value);
                             fb_profile.child("pw").set(form.pswd1.value);
+                            fb_profile.child("구분").set(form.user.value);
                         }
                     }
                     else alert("이미 가입된 아이디입니다.");
