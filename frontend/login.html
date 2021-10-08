@@ -168,11 +168,21 @@
         var DB_pw_4 = 0;
         var DB_pw_5 = 0;
 
+        var DB_user_1=0;
+        var DB_user_2=0;
+        var DB_user_3=0;
+        var DB_user_4=0;
+        var DB_user_5=0;    
+
         var fb_id_1 = firebase.database().ref("login/1/id");
         fb_id_1.on('value', snap => { DB_id_1 = snap.val(); });
 
         var fb_pw_1 = firebase.database().ref("login/1/pw");
         fb_pw_1.on('value', snap => { DB_pw_1 = snap.val(); });
+
+        var fb_user_1 = firebase.database().ref("login/1/구분");
+        fb_user_1.on('value', snap => { DB_user_1 = snap.val(); });
+
 
         var fb_id_2 = firebase.database().ref("login/2/id");
         fb_id_2.on('value', snap => { DB_id_2 = snap.val(); });
@@ -180,11 +190,19 @@
         var fb_pw_2 = firebase.database().ref("login/2/pw");
         fb_pw_2.on('value', snap => { DB_pw_2 = snap.val(); });
 
+        var fb_user_2 = firebase.database().ref("login/2/구분");
+        fb_user_2.on('value', snap => { DB_user_2 = snap.val(); });
+
+
         var fb_id_3 = firebase.database().ref("login/3/id");
         fb_id_3.on('value', snap => { DB_id_3 = snap.val(); });
 
         var fb_pw_3 = firebase.database().ref("login/3/pw");
         fb_pw_3.on('value', snap => { DB_pw_3 = snap.val(); });
+
+        var fb_user_3 = firebase.database().ref("login/3/구분");
+        fb_user_3.on('value', snap => { DB_user_3 = snap.val(); });
+
 
         var fb_id_4 = firebase.database().ref("login/4/id");
         fb_id_4.on('value', snap => { DB_id_4 = snap.val(); });
@@ -192,12 +210,18 @@
         var fb_pw_4 = firebase.database().ref("login/4/pw");
         fb_pw_4.on('value', snap => { DB_pw_4 = snap.val(); });
 
+        var fb_user_4 = firebase.database().ref("login/4/구분");
+        fb_user_4.on('value', snap => { DB_user_4 = snap.val(); });
+
+
         var fb_id_5 = firebase.database().ref("login/5/id");
         fb_id_5.on('value', snap => { DB_id_5 = snap.val(); });
 
         var fb_pw_5 = firebase.database().ref("login/5/pw");
         fb_pw_5.on('value', snap => { DB_pw_5 = snap.val(); });
 
+        var fb_user_5 = firebase.database().ref("login/5/구분");
+        fb_user_5.on('value', snap => { DB_user_5 = snap.val(); });
 
     </script>
     <!-- login_function -->
