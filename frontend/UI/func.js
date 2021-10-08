@@ -150,23 +150,39 @@
     }
     
 //Weekly 함수
-    var weeknum;
-    var day = new Date();
-    day.setDate(day.getDate()-day.getDay());
+var weeknum;
+var day = new Date();
+day.setDate(day.getDate()-day.getDay());
 
-    function week_calandar(week) {
-    	day.setDate(day.getDate()+week*7);
-    	var title = day.getFullYear() + "년" + (day.getMonth()+1) +"월";
-    	var data = ""
-    		for(var i=0 ; i<7 ; i++) {
-    			data += day.getDate() +"<br />"+"<hr />";
-    			if(day.getDate() == 1)
-    				title += " ~ " + day.getFullYear() + "/" + (day.getMonth()+1);
-    			day.setDate(day.getDate()+1);
-    			}
-    	day.setDate(day.getDate()-7);
-    	document.getElementById("calandar").innerHTML = title + "<br />" + data;
-    	}
+function week_calandar(week) {
+    day.setDate(day.getDate()+week*7);
+    var title = day.getFullYear() + "년" + (day.getMonth()+1) +"월";
+    var data = ""
+    
+    var fb_location=0;
+    var fb_location_1="";    
+
+    var fb_route = (day.getFullYear()-2000)*10000+(day.getMonth()+1)*100+(day.getDate()-day.getDay())*1;
+   
+        for(var i=0 ; i<7 ; i++) {
+            var ment = ""
+
+            fb_location = firebase.database().ref("박철수"+"/"+String(fb_route)+"/"+"내용");
+            fb_location.on('value', snap =>{ fb_location_1 = snap.val();});
+                  
+            if(fb_location_1 != null){
+                ment=fb_location_1;
+            }
+
+            data += day.getDate() + "   "+ ment +"<br />"+"<hr />";
+            if(day.getDate() == 1)
+                title += " ~ " + day.getFullYear() + "/" + (day.getMonth()+1);
+            day.setDate(day.getDate()+1);
+            fb_route+=1;
+            }
+    day.setDate(day.getDate()-7);
+    document.getElementById("calandar").innerHTML = title + "<br />" + data;
+    }
 
     function set_day() {
     	day = new Date();
