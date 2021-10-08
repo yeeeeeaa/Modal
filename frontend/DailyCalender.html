@@ -42,6 +42,33 @@
             border-right: 3px solid #87ceeb;
             border-bottom : 3px solid #87ceeb;
         }
+        body {
+  height: 100vh;
+  margin: 0;
+  background: linear-gradient(#FFFFFF 50%, rgb(235, 247, 255) 40%);
+}
+p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  color: rgb(235, 247, 255);
+  font-size: 7vw;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+p::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: attr(data-split);
+  height: 50%;
+  color: #fff;
+  overflow: hidden;
+}
         </style>
     
         <script language="javascript">
@@ -83,15 +110,16 @@
     </head>
  
     <body onload="build()">
-        
+        <p data-split="split text color">
             <div id="btn_group">
                 <input id="input1" type="button" style="float:left; margin-left: 500px;" value="<" onclick="befored()" id="before">
                 <div style="float:left; margin-top: 0px; margin-right: 30px;" id="daytitle"></div>
                 <input id="input2" type="button" style="float:left; margin-left: 0px;"  value=">" onclick="nextd()" id="next">
             </div>
+        
             
-            <div style="float:left; margin-top: 320px; text-align:center;"  id="content"></div>
-            
+            <div style=" border: 3px solid #e5e5e6; float:left; margin-top: 200px;text-size:200%; margin-right:400px; margin-left: 700px;"  id="content"></div>
+            </p>
             <script>
                 var firebaseConfig = {
                 apiKey: null,
