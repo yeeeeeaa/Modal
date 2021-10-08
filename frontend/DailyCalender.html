@@ -45,21 +45,9 @@
         body {
   height: 100vh;
   margin: 0;
-  background: linear-gradient(#FFFFFF 50%, rgb(235, 247, 255) 40%);
+  background: linear-gradient(#FFFFFF 50%, rgb(235, 247, 255) 50%);
 }
-p {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  margin: 0;
-  color: rgb(235, 247, 255);
-  font-size: 7vw;
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 700;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
+
 p::before {
   position: absolute;
   top: 0;
@@ -115,13 +103,14 @@ p::before {
                 <input id="input1" type="button" style="float:left; margin-left: 500px;" value="<" onclick="befored()" id="before">
                 <div style="float:left; margin-top: 0px; margin-right: 30px;" id="daytitle"></div>
                 <input id="input2" type="button" style="float:left; margin-left: 0px;"  value=">" onclick="nextd()" id="next">
-                <input id="input1" type="button" style="float:left; margin-left: 500px;" value="새로고침" onclick="build()">
-                <button id="goSecondPg" class="custom_button button_detail"
-					onclick="location.href='Emotion.html'"></button>
+                <input id="input1" type="button" style="float:left; margin-left: 300px;" value="새로고침" onclick="build()">
+                <button id="goSecondPg" class="custom_button button_detail" style="display: none;"
+                onclick="location.href='Emotion.html'"></button>
+
             </div>
         
             
-            <div style=" border: 3px solid #e5e5e6; float:left; margin-top: 200px;text-size:200%; margin-right:400px; margin-left: 700px;"  id="content"></div>
+            <div style="float:left; margin-top: 200px;text-size:200%; margin-right:300px; margin-left: 700px;"  id="content"></div>
             </p>
             <script>
                 var firebaseConfig = {
@@ -137,15 +126,15 @@ p::before {
         
                 // Initialize Firebase
                 firebase.initializeApp(firebaseConfig);
-
                 var firebase_page_check = firebase.database().ref('page_num');
 
-                firebase_page_check.on('value', snap =>{
-                var page_num_test = snap.val();
-                if(page_num_test == 2){
-                    goSecondPg.click();
-                }
-                });
+firebase_page_check.on('value', snap =>{
+var page_num_test = snap.val();
+if(page_num_test == 2){
+    goSecondPg.click();
+}
+});
+
             </script>
 
             <script>
