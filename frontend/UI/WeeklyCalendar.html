@@ -15,7 +15,9 @@
       }
       body{
         font-family: 'IBMPlexSansKR-SemiBold';
-        background-color:rgb(235, 247, 255);
+        height: 20vh;
+        margin: 10;
+        background: linear-gradient(#FFFFFF 50%, rgb(235, 247, 255) 50%);
       }
       .btn1{
         width:50px;
@@ -47,7 +49,6 @@
     </style>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
       <title>달력</title>
-        )
     <script>
       window.onload=function(){
         day = new Date();
@@ -59,19 +60,17 @@
   </head>
 
   <body>
-
-    <input type="button" value="◀" class="btn1" onclick="week_calandar(-1)" />
-    <input type="button" value="새로고침" class="btn2" onclick="week_calandar(0)" />
-    <input type="button" value="▶" class="btn1" onclick="week_calandar(1)" />
-
-    <p id="calandar"; style="font-size:35px";></p>
-
+      <input type="button" style="margin-left: 750px;" value="◀" class="btn1" onclick="week_calandar(-1)" />
+      <input type="button" value="새로고침" class="btn2" onclick="week_calandar(0)" />
+      <input type="button" value="▶" class="btn1" onclick="week_calandar(1)" />
+    
     <a href="../DailyCalender.html">    
-        <button id="moveDaily" type="button" class="btn3" onClick="connect_weekly_daily()">일간달력이동</button>
+        <button id="moveDaily" style="margin-left: 330px;"type="button" class="btn3" onClick="connect_weekly_daily()">일간달력이동</button>
     </a>
     <a href="../familyCalendar.html">
-      <button type="button" class="btn3" onClick="connect_Weekly_monthly()">월간달력이동</button>
+      <button type="button" class="btn3" style="margin-left: 30px;" onClick="connect_Weekly_monthly()">월간달력이동</button>
     </a>
+    <p id="calandar"; style="font-size:35px" ;></p>
 
     <script>
         var firebaseConfig = {
