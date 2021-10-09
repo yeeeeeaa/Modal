@@ -2,7 +2,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<script src="emotion.js"></script>
+<script src="./emotion.js"></script>
+
 <title>감정 통계입니다.</title>
 
 <style>
@@ -48,16 +49,7 @@ span:nth-of-type(4){height:50%;    left:210px;}
 span:nth-of-type(5){height:100%;    left:280px;}
 span:nth-of-type(6){height:100%;    left:350px;}
 -->
-<!--
-    span:nth-of-type(2){height:100%;    left:70px;}
-    span:nth-of-type(3){height:30%;    left:140px;}
-    span:nth-of-type(4){height:50%;    left:210px;}
-    span:nth-of-type(5){height:100%;    left:280px;}
-    span:nth-of-type(6){height:100%;    left:350px;}
 
-
-
--->
 <style>
 body{
     font-family: 'IBMPlexSansKR-Bold';
@@ -99,11 +91,12 @@ span{
 
 </head>
 <body>
+  
     <div align="center" style="margin-bottom: 0px;">
-        
-      <font size=6> 분노 : </font> <font id="angerPrint" size=6> </font>      
-      <br>
-      <font size=6> 행복 : </font> <font id="happinessPrint" size=6> </font>
+        <br><br><br><br>
+		 <font size=6> 분노 : </font> <font id="angerPrint" size=6> </font>      
+        <br>
+        <font size=6> 행복 : </font> <font id="happinessPrint" size=6> </font>
         <br>
         <font size=6> 신남 : </font> <font id="excitedPrint" size=6> </font>
         <br>
@@ -114,8 +107,8 @@ span{
         <font size=6> 슬픔 : </font> <font id="sadPrint" size=6> </font>
         <br>
         
-   </div>
-
+	</div>
+ 
 
 
 <script type="text/javascript" src="emotion.js"></script>
@@ -126,7 +119,7 @@ span{
 <script>
     // Initialize Firebase
     var firebaseConfig = {
-        apiKey: null,
+        apiKey: "AIzaSyC7Y4NQcEyj1j3hm2xgf3jrN5kAW4B-vgc",
          authDomain: "modal-dbe5e.firebaseapp.com",
          databaseURL: "https://modal-dbe5e-default-rtdb.firebaseio.com",
          projectId: "modal-dbe5e",
@@ -147,8 +140,8 @@ span{
 
  // 분노 cnt값 html에 표기
 var angerPrint = document.getElementById("angerPrint");
-var dbRef = firebase.database().ref().child("emotion/anger");
-dbRef.on('value',snap => angerPrint.innerHTML = snap.val());
+var dbRefAnger = firebase.database().ref().child("emotion/anger");
+dbRefAnger.on('value',snap => angerPrint.innerHTML = snap.val());
  
 
  //행복 cnt값 html에 표기
@@ -176,59 +169,71 @@ var sadPrint = document.getElementById("sadPrint");
 var dbRef = firebase.database().ref().child("emotion/sad");
 dbRef.on('value',snap => sadPrint.innerHTML = snap.val());
 
+//innerHTML값을 변수로 가져오기 <- for문에 넣기 위해
+var angerFor=angerPrint.innerHTML;
+
 
 //이미지 쌓아서 그래프 만들기
-function drawGraph(){
-    document.write('<div style="margin-top: 0px;">');
+
+function drawGraph(angerFor,happinessFor,excitedFor,sosoFor,gloomyFor,sadFor){
+    document.write("<div>");
 
     //분노
-    for(var i=0;i<7;i++){
+    for(var i=0;i<angerFor;i++){
         document.write('<a style="font-size: 40px;">🟥</a>');
     }
-    document.write('<a style="font-size: 40px; " >분노</a>'); 
+    document.write("분노");
     document.write("<br>");
+
     
     //행복
-    for(var i=0;i<5;i++){
+    for(var i=0;i<happinessFor;i++){
         document.write('<a style="font-size: 40px;">🟧</a>');
     }
-    document.write('<a style="font-size: 40px;">행복</a>');
+    document.write("행복");
     document.write("<br>");
 
    //신남
-    for(var i=0;i<5;i++){
+    for(var i=0;i<excitedFor;i++){
         document.write('<a style="font-size: 40px;">🟨</a>');
     }
-    document.write('<a style="font-size: 40px;">신남</a>');
+    document.write("신남");
     document.write("<br>");
 
     //우울
-    for(var i=0;i<5;i++){
-        document.write('<a style="font-size: 40px;">🟩</a>');
+    for(var i=0;i<gloomyFor;i++){
+         document.write('<a style="font-size: 40px;">🟩</a>');
     }
-    document.write('<a style="font-size: 40px;">우울</a>');
+    document.write("우울");
     document.write("<br>");
 
     //평범
-    for(var i=0;i<5;i++){
+    for(var i=0;i<sosoFor;i++){
         document.write('<a style="font-size: 40px;">🟦</a>');
     }
-    document.write('<a style="font-size: 40px;">평범</a>');
+    document.write("평범");
     document.write("<br>");
     //슬픔
-    for(var i=0;i<5;i++){
+    for(var i=0;i<sadFor;i++){
         document.write('<a style="font-size: 40px;">🟪</a>');
     }
-    document.write('<a style="font-size: 40px;">슬픔</a>');
+    document.write("슬픔");
     document.write("<br>");
 
     document.write("</div>");
 }
 
-drawGraph();
 
+setTimeout(function(){drawGraph(Number(angerPrint.innerHTML),Number(happinessPrint.innerHTML),Number(excitedPrint.innerHTML),
+Number(gloomyPrint.innerHTML),Number(sosoPrint.innerHTML),Number(sadPrint.innerHTML))},3000);
+
+var i=2;
+if(i<=1){    //우울 지수<1 이면
+    window.open('mailto:gongmojunFor@gmail.com?subject=subject&body=우울 지수 위험!');
+}
 
 </script>
+
 
 </body>
 </html>
