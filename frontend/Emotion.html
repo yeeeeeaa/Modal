@@ -16,7 +16,7 @@
         }
 
         body{
-            background-color: #87ceeb;
+            background-color: rgb(235, 247, 255);
         }
 
        p {
@@ -30,6 +30,15 @@
         }
         .btn{
             font-family: 'IBMPlexSansKR-Bold';
+        }
+        #input1 {
+            background-color: #FFFFFF;
+            width: 100px;
+            height: 50px;
+            border-top: 3px solid #87ceeb;
+            border-left: 3px solid #87ceeb;
+            border-right: 3px solid #87ceeb;
+            border-bottom : 3px solid #87ceeb;
         }
        
     </style>
@@ -71,25 +80,26 @@
         </div>
         <img src="캘린더 인공지능 듣는 중.png"
             style="position: absolute; right: 0px; bottom: 0px; padding: 0px 60px 60px 0px; width:400px; height:400px; " />
-            <button id="goFirstPg" class="custom_button button_detail"
+            <button id="goFirstPg" class="custom_button button_detail" style="display: none;"
 					onclick="location.href='DailyCalender.html'"></button>
     </div>
 
    <form>
-        <input type="button" value="분노"  onclick="anger()"  
+        <input type="button" value="분노" id="input1" onclick="anger()"  
         style=" background-color: #FFFFFF; width: 176px; height: 114px; margin-top: 150px; margin-left: 100px;font-size: 35px;"/>
-        <input type="button" value="행복"  onclick="happiness()"  
+        <input type="button" value="행복" id="input1" onclick="happiness()"  
         style="background-color: #FFFFFF; width: 176px; height: 114px; margin-top: 150px; margin-left: 100px;font-size: 35px;"/>
-        <input type="button" value="신남"  onclick="excited()"  
+        <input type="button" value="신남" id="input1" onclick="excited()"  
         style="background-color:  #FFFFFF; width: 176px; height: 114px; margin-top: 150px; margin-left: 100px;font-size: 35px;"/>
-        <input type="button" value="우울"  onclick="gloomy()"  
+        <input type="button" value="우울" id="input1" onclick="gloomy()"  
         style="background-color: #FFFFFF; width: 176px; height: 114px; margin-top: 150px; margin-left: 100px;font-size: 35px;"/>
-        <input type="button" value="평범"  onclick="soso()"  
+        <input type="button" value="평범" id="input1" onclick="soso()"  
         style="background-color:  #FFFFFF; width: 176px; height: 114px; margin-top: 150px; margin-left: 100px;font-size: 35px;"/>
-        <input type="button" value="슬픔"  onclick="sad()"  
+        <input type="button" value="슬픔" id="input1" onclick="sad()"  
         style="background-color: #FFFFFF; width: 176px; height: 114px; margin-top: 150px; margin-left: 100px;font-size: 35px;"/>
     </form>
-    <a href="emotionChart.html"><button>통계 보기</button></a>
+    <a href="emotionChart.html"><button id="input1" style="margin-top: 300px; margin-left: 100px;
+        width: 156px; height: 94px; font-size: 25px;">통계 보기</button></a>
 </body>
 
 </html>
