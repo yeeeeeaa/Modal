@@ -227,6 +227,20 @@ function drawGraph(angerFor,happinessFor,excitedFor,sosoFor,gloomyFor,sadFor){
 setTimeout(function(){drawGraph(Number(angerPrint.innerHTML),Number(happinessPrint.innerHTML),Number(excitedPrint.innerHTML),
 Number(gloomyPrint.innerHTML),Number(sosoPrint.innerHTML),Number(sadPrint.innerHTML))},3000);
 
+//email보내기
+   var firebase_sad_check = firebase.database().ref('emotion/sad');
+
+        	firebase_sad_check.on('value', snap =>{
+                var page_sad_test = snap.val();
+                if(page_sad_test > 4){
+                	window.open('mailto:gongmojunFor@gmail.com?subject=subject&body=우울 지수 위험!');
+                    
+                }
+        	});
+
+
+
+
 var i=2;
 if(i<=1){    //우울 지수<1 이면
     window.open('mailto:gongmojunFor@gmail.com?subject=subject&body=우울 지수 위험!');
