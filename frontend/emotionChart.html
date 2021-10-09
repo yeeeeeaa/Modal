@@ -27,7 +27,7 @@ div{
 body {
   height: 100vh;
   margin: 0;
-  background: linear-gradient(#FFFFFF 50%, rgb(235, 247, 255) 50%);
+  background: linear-gradient(rgb(235, 247, 255) 50%, #FFFFFF 50%);
 }
 #input1 {
             background-color: #FFFFFF;
@@ -99,33 +99,23 @@ span{
 
 </head>
 <body>
-    <button id="input1" style="float:right;" onclick="alertpercent()" >백분율 확인</button>
-    <div>
-        <span class="red"       data-val='anger'>분노</span>
-        <span class="orange"    data-val='happiness'>행복</span>
-        <span class="yellow"    data-val='excited'>신남</span>
-        <span class="green"     data-val='gloomy'>우울</span>
-        <span class="blue"      data-val='soso'>평범</span>
-        <span class="purple"    data-val='sad'>슬픔</span>
-    </div>
+    <div align="center" style="margin-bottom: 0px;">
+        
+      <font size=6> 분노 : </font> <font id="angerPrint" size=6> </font>      
+      <br>
+      <font size=6> 행복 : </font> <font id="happinessPrint" size=6> </font>
+        <br>
+        <font size=6> 신남 : </font> <font id="excitedPrint" size=6> </font>
+        <br>
+        <font size=6> 우울 : </font> <font id="gloomyPrint" size=6> </font>
+        <br>
+        <font size=6> 평범 : </font> <font id="sosoPrint" size=6> </font>
+        <br>
+        <font size=6> 슬픔 : </font> <font id="sadPrint" size=6> </font>
+        <br>
+        
+   </div>
 
-    <div align="center">
-        <br><br><br>
-		<font size=6> 분노 : &nbsp;&nbsp;</font> <font id="angerPrint" size=6> </font>		
-	
-		<font size=6>&nbsp;&nbsp;&nbsp; 행복 : &nbsp;&nbsp;</font> <font id="happinessPrint" size=6> </font>
-      
-        <font size=6>&nbsp;&nbsp;&nbsp; 신남 : &nbsp;&nbsp;</font> <font id="excitedPrint" size=6> </font>
-        
-        <font size=6>&nbsp;&nbsp;&nbsp; 우울 : &nbsp;&nbsp;</font> <font id="gloomyPrint" size=6> </font>
-        
-        <font size=6>&nbsp;&nbsp;&nbsp; 평범 : &nbsp;&nbsp;</font> <font id="sosoPrint" size=6> </font>
-        
-        <font size=6>&nbsp;&nbsp;&nbsp; 슬픔 : &nbsp;&nbsp;</font> <font id="sadPrint" size=6> </font>
-        
-         <font size=6>&nbsp;&nbsp;&nbsp; 분노게이지 : &nbsp;&nbsp;</font> <font id="percentAnger" size=6> </font>
-	</div>
- 
 
 
 <script type="text/javascript" src="emotion.js"></script>
@@ -136,7 +126,7 @@ span{
 <script>
     // Initialize Firebase
     var firebaseConfig = {
-        apiKey: "AIzaSyC7Y4NQcEyj1j3hm2xgf3jrN5kAW4B-vgc",
+        apiKey: null,
          authDomain: "modal-dbe5e.firebaseapp.com",
          databaseURL: "https://modal-dbe5e-default-rtdb.firebaseio.com",
          projectId: "modal-dbe5e",
@@ -187,57 +177,58 @@ var dbRef = firebase.database().ref().child("emotion/sad");
 dbRef.on('value',snap => sadPrint.innerHTML = snap.val());
 
 
-//감정 cnt값을 형변환 후 계산
-intAnger=Number(angerPrint.innerHTML);
-intHappiness=Number(happinessPrint.innerHTML);
-intExcited=Number(excitedPrint.innerHTML);
-intGloomy=Number(gloomyPrint.innerHTML);
-intSoso=Number(sosoPrint.innerHTML);
-intSad=Number(sadPrint.innerHTML);
-
-var percentAnger=0;
-
-//분노
-percentAnger=Number(angerPrint.innerHTML)*10;
-
-//행복
-percentHappiness=Number(happinessPrint.innerHTML)*10;
-  
-//신남
-percentExcited=Number(excitedPrint.innerHTML)*10;
-  
-//우울
-percentGloomy=Number(gloomyPrint.innerHTML)*10;
-  
-//슬픔
-percentSad=Number(sadPrint.innerHTML)*10;
-  
-//평범
-percentSoso=Number(sosoPrint.innerHTML)*10;
-
-function alertpercent(){
-    percentHappiness=Number(happinessPrint.innerHTML)*10;
-    alert(percentHappiness); 
-}
-
-/*
+//이미지 쌓아서 그래프 만들기
 function drawGraph(){
-    document.write("<style>");
-    document.write("span:nth-of-type(1){height:"+Number(angerPrint.innerHTML)*10+"%;    left:0px;}");
-    document.write("span:nth-of-type(2){height:"+Number(happinessPrint.innerHTML)*10+"%;    left:70px;}");
-    document.write("span:nth-of-type(3){height:"+Number(excitedPrint.innerHTML)*10+"%;    left:140px;}");
-    document.write("span:nth-of-type(4){height:"+Number(gloomyPrint.innerHTML)*10+"%;    left:210px;}");
-    document.write("span:nth-of-type(5){height:"+Number(sosoPrint.innerHTML)*10+"%;    left:280px;}");
-    document.write("span:nth-of-type(6){height:"+Number(sadPrint.innerHTML)*10+"%;    left:350px;}")
-    document.write("</style>");
+    document.write('<div style="margin-top: 0px;">');
+
+    //분노
+    for(var i=0;i<7;i++){
+        document.write('<a style="font-size: 40px;">🟥</a>');
+    }
+    document.write('<a style="font-size: 40px; " >분노</a>'); 
+    document.write("<br>");
+    
+    //행복
+    for(var i=0;i<5;i++){
+        document.write('<a style="font-size: 40px;">🟧</a>');
+    }
+    document.write('<a style="font-size: 40px;">행복</a>');
+    document.write("<br>");
+
+   //신남
+    for(var i=0;i<5;i++){
+        document.write('<a style="font-size: 40px;">🟨</a>');
+    }
+    document.write('<a style="font-size: 40px;">신남</a>');
+    document.write("<br>");
+
+    //우울
+    for(var i=0;i<5;i++){
+        document.write('<a style="font-size: 40px;">🟩</a>');
+    }
+    document.write('<a style="font-size: 40px;">우울</a>');
+    document.write("<br>");
+
+    //평범
+    for(var i=0;i<5;i++){
+        document.write('<a style="font-size: 40px;">🟦</a>');
+    }
+    document.write('<a style="font-size: 40px;">평범</a>');
+    document.write("<br>");
+    //슬픔
+    for(var i=0;i<5;i++){
+        document.write('<a style="font-size: 40px;">🟪</a>');
+    }
+    document.write('<a style="font-size: 40px;">슬픔</a>');
+    document.write("<br>");
+
+    document.write("</div>");
 }
-*/
+
+drawGraph();
+
 
 </script>
-<style>
-    span:nth-of-type(1){height:10%;    left:0px;}
-    span:nth-of-type(2){height:20%;    left:70px;}
-</style>
 
 </body>
 </html>
